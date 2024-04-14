@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-04-14 dom 14:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Security</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/styles.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Security</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6c3f132">Privacy measures</a>
+<ul>
+<li><a href="#orgb3de0f7">Avoid non-privacy respecting services</a></li>
+<li><a href="#org0c46cf2">Minimize digital footprint</a></li>
+<li><a href="#org9d9ecd1">Tweak the browser</a></li>
+<li><a href="#orgb3ece37">Aliases and Pseudonyms</a></li>
+</ul>
+</li>
+<li><a href="#orgef5f590">Security measures</a>
+<ul>
+<li><a href="#org3d269df">Password managers</a></li>
+<li><a href="#org3a7abfd">Multifactor Authentication</a></li>
+<li><a href="#orgdcf40d2">Signatures</a></li>
+<li><a href="#org7d7454c">Adblocking</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+Apart from being a bit  paranoid, I also quite enjoy wasting time with the most trivial things.
+</p>
+
+<p>
+This combination (along with my Security and Privacy classes) has recently led me down a rabbit hole of discovery.
+</p>
+
+<p>
+In this post I'll talk briefly about what measures I've taken in order to secure my systems and protect my online privacy.
+</p>
+
+<div id="outline-container-org6c3f132" class="outline-2">
+<h2 id="org6c3f132">Privacy measures</h2>
+<div class="outline-text-2" id="text-org6c3f132">
+</div>
+<div id="outline-container-orgb3de0f7" class="outline-3">
+<h3 id="orgb3de0f7">Avoid non-privacy respecting services</h3>
+<div class="outline-text-3" id="text-orgb3de0f7">
+<p>
+While this one might be obvious, this is actually hard to do.
+</p>
+
+<p>
+I don't have any social media accounts, more surprisingly, I don't have a Google account!
+</p>
+
+<p>
+But I still use Google services, mostly Search and Youtube, since they are better than competing offers, or, in the case of Youtube, since its where all the content creators are.
+</p>
+
+<p>
+And I use Whatsapp exclusively as my messaging app on Android, despite its parent company being criticized over the years for their stance towards privacy.
+</p>
+
+<p>
+Some of these services are really hard to replace due to either their enormous quality gap compared to alternatives (in the case of Google Search) or because of Network Effect (in the case of Youtube and Whatsapp).
+</p>
+
+<p>
+Despite that I have <a href="https://duckduckgo.com">duckduckgo</a> as my default search engine, and get a lot of mileage out of the <a href="https://duckduckgo.com/bangs">Bangs</a>.
+</p>
+
+<p>
+As for Youtube, I either download the video with yt-dlp and view them in mpv (mpv can do this directly by simply dragging and dropping), or I use <a href="https://invidious.io/">Invidious</a>.
+</p>
+
+<p>
+For my email I use <a href="https://proton.me">Proton Mail</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0c46cf2" class="outline-3">
+<h3 id="org0c46cf2">Minimize digital footprint</h3>
+<div class="outline-text-3" id="text-org0c46cf2">
+<p>
+I frequently trim unused accounts, not only deleting my credentials but also asking for websites to delete all information they have stored on me.
+</p>
+
+<p>
+This is surprisingly easy with GDPR, even if the website doesn't provide a straightforward way to delete accounts, chances are the privacy policy includes a helpful link just for that.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d9ecd1" class="outline-3">
+<h3 id="org9d9ecd1">Tweak the browser</h3>
+<div class="outline-text-3" id="text-org9d9ecd1">
+<p>
+One of the first things I do when I switch browsers (surprisingly common), is look through the settings page to try to improve privacy and security, this includes disabling 3rd party cookies, enabling their respective "reduced tracking" modes, etc&#x2026;
+</p>
+
+<p>
+I also am one of the few that browses the web with javascript off by default, only enabling it on a domain by domain basis.
+Since my web browsing is quite basic (mostly looking at forum/blog posts and reading documentation) this doesn't affect me much, and improves my security substancially, considering I'm not running untrusted Javascript code everytime I open a web page.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb3ece37" class="outline-3">
+<h3 id="orgb3ece37">Aliases and Pseudonyms</h3>
+<div class="outline-text-3" id="text-orgb3ece37">
+<p>
+I usually avoid using my personal email to sign up for accounts, this is mostly related to spam issues than to privacy per se, still, email aliases have the advantage of segmenting different accounts more cleanly.
+</p>
+
+<p>
+When I require help or wish to comment on some post/respond to another comment, I always use a pseudonym (like most people I suppose, outside social media like Facebook and Instagram), usually one per website.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgef5f590" class="outline-2">
+<h2 id="orgef5f590">Security measures</h2>
+<div class="outline-text-2" id="text-orgef5f590">
+<p>
+TODO: fde
+</p>
+
+<p>
+TODO: Secure Boot
+</p>
+
+<p>
+TODO: Sandboxing and Mac (bubblewrap + selinux?)
+</p>
+</div>
+
+<div id="outline-container-org3d269df" class="outline-3">
+<h3 id="org3d269df">Password managers</h3>
+<div class="outline-text-3" id="text-org3d269df">
+<p>
+Most of my passwords reside on my <a href="https://www.passwordstore.org/">password manager</a>, except for device credentials and the master password&#x2026; Obviously!
+</p>
+
+<p>
+All passwords are randomly generated and are at least , including characters, symbols and numerals.
+</p>
+
+<p>
+I only know a couple of credentials from the top of my head:
+</p>
+<ol class="org-ol">
+<li>My computer login</li>
+<li>My password managers password</li>
+<li>My phone pin</li>
+<li>My email</li>
+</ol>
+
+<p>
+That's it!
+</p>
+
+<p>
+I can't even remember my debit card details! Altough this may possibly be related to he fact I don't have a lot of income than to anything else ;-;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3a7abfd" class="outline-3">
+<h3 id="org3a7abfd">Multifactor Authentication</h3>
+<div class="outline-text-3" id="text-org3a7abfd">
+<p>
+Of course I always activate 2fa on services that have the option (roughly 50% of them), the rest either use SMS 2fa, which isn't as secure, or they don't have any kind of 2 factor.
+</p>
+
+<p>
+I even considered buying a <a href="https://www.yubico.com/products/">Physical Security Key</a> recently, but I decided against it, since support for them is even more rare than other options.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdcf40d2" class="outline-3">
+<h3 id="orgdcf40d2">Signatures</h3>
+<div class="outline-text-3" id="text-orgdcf40d2">
+<p>
+I've recently taken to signing both my emails and git commits.
+</p>
+
+<p>
+Basically, as far as I understand <a href="https://en.wikipedia.org/wiki/Digital_signature">Digital Signatures</a> are a way to ensure message Authenticity, to put it another way, they guarante that a given message came from us and wasn't tampered with (be it in transit or somewhere else).
+</p>
+
+<p>
+My email service of choice makes signing emails as easy as toggling the option in the settings menu, as for other email providers, <a href="https://www.thunderbird.net/">Thunderbird</a> also provides a relatively easy way of signing your emails.
+</p>
+
+
+<p>
+To automatically sign git commits, you must set commit.gpgsign to true, and set user.signingkey to your key ID.
+If you use <a href="https://github.com/">Github</a> as your <a href="https://en.wikipedia.org/wiki/Forge_(software)">Forge</a>, you can add your key using the web interface, and github will visually display a <i>Verified</i> badge next to all your signed commits.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d7454c" class="outline-3">
+<h3 id="org7d7454c">Adblocking</h3>
+<div class="outline-text-3" id="text-org7d7454c">
+<p>
+Apart from also being a good privacy practise (due to reducing tracking by 3rd parties), adblocking is also largely a security measure, due to the rampant scams, fake download buttons, popups that redirect you to malicious sites&#x2026;
+</p>
+
+<p>
+The removal of advertisements and tracking also substancially improves speeds.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
