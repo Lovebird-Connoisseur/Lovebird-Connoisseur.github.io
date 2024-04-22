@@ -14,8 +14,8 @@
   <link>https://Lovebird-Connoisseur.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Mon, 22 Apr 2024 11:55:40 +0100</pubDate>
-  <lastBuildDate>Mon, 22 Apr 2024 11:55:40 +0100</lastBuildDate>
+  <pubDate>Mon, 22 Apr 2024 12:12:41 +0100</pubDate>
+  <lastBuildDate>Mon, 22 Apr 2024 12:12:41 +0100</lastBuildDate>
   <generator>Emacs 29.3 Org-mode 9.6.15</generator>
   <webMaster>lovebird-connoisseur@tutanota.com (Lovebird Connoisseur)</webMaster>
   <image>
@@ -40,57 +40,43 @@
     TODO: How to add a footer to org-file
   </p>
 
-  <item>
-    <title>About me</title>
-    <link>https://Lovebird-Connoisseur.github.io/index.html#org84c8cf7</link>
-    <author>lovebird-connoisseur@tutanota.com (Lovebird Connoisseur)</author>
-    <guid isPermaLink="false">https://Lovebird-Connoisseur.github.io/index.html#org84c8cf7</guid>
-    <pubDate>Mon, 22 Apr 2024 11:43:00 +0100</pubDate>
-
-    <description><![CDATA[<p>
+  <p>
     Hello!
-    </p>
+  </p>
 
-    <p>
+  <p>
     I'm a young Computer Science student, just discovering this new world of technology, so, if I get anything wrong I'd be grateful if you could tell me.
-    </p>
-    ]]></description>
-  </item>
+  </p>
 
-  <item>
-    <title>Contacts</title>
-    <link>https://Lovebird-Connoisseur.github.io/index.html#org9ee1fcf</link>
-    <author>lovebird-connoisseur@tutanota.com (Lovebird Connoisseur)</author>
-    <guid isPermaLink="false">https://Lovebird-Connoisseur.github.io/index.html#org9ee1fcf</guid>
-    <pubDate>Mon, 22 Apr 2024 11:43:00 +0100</pubDate>
 
-    <description><![CDATA[<ul class="org-ul">
+  <ul class="org-ul">
     <li><a href="mailto:lovebird-connoisseur@tutanota.com">Email</a></li>
-    <li>PGP</li>
-    </ul>
-    ]]></description>
-  </item>
+    <li><p>
+      PGP
+    </p>
+
+    <p>
+      <a href="../html/index.xml">RSS</a>
+    </p></li>
+  </ul>
 
   <item>
-    <title>Posts</title>
-    <link>https://Lovebird-Connoisseur.github.io/index.html#orgcbe83fd</link>
+    <title>file:porque-lisp.org</title>
+    <link>https://Lovebird-Connoisseur.github.io/index.html#org4c35477</link>
     <author>lovebird-connoisseur@tutanota.com (Lovebird Connoisseur)</author>
-    <guid isPermaLink="false">https://Lovebird-Connoisseur.github.io/index.html#orgcbe83fd</guid>
-    <pubDate>Mon, 22 Apr 2024 11:43:00 +0100</pubDate>
+    <guid isPermaLink="false">https://Lovebird-Connoisseur.github.io/index.html#org4c35477</guid>
+    <pubDate>Mon, 22 Apr 2024 12:12:00 +0100</pubDate>
 
-    <description><![CDATA[<p>
-    [[][RSS]]
-    </p>
+    <description><![CDATA[]]></description>
+  </item>
+  <item>
+    <title>file:security.org</title>
+    <link>https://Lovebird-Connoisseur.github.io/index.html#org9483e1d</link>
+    <author>lovebird-connoisseur@tutanota.com (Lovebird Connoisseur)</author>
+    <guid isPermaLink="false">https://Lovebird-Connoisseur.github.io/index.html#org9483e1d</guid>
+    <pubDate>Mon, 22 Apr 2024 12:12:00 +0100</pubDate>
 
-    <p>
-    <a href="porque-lisp.html">Porquê Lisp? (PT)</a>
-    </p>
-
-    <p>
-    <a href="security.html">Steps I take to protect my security and privacy</a>
-    </p>
-
-    <div class="org-center">
+    <description><![CDATA[<div class="org-center">
     <p>
     The content under this site is licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a>. 
     </p>
