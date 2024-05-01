@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
 <head>
-<!-- 2024-04-22 seg 12:12 -->
+<!-- 2024-04-23 ter 00:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Porquê Common Lisp</title>
@@ -193,10 +193,9 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="../css/styles.css"/>
-<link rel="alternate" type="application/rss+xml"
-                                 href="https://Lovebird-Connoisseur.github.ioindex.xml"
-                                 title="RSS feed for Lovebird-Connoisseur.githu.io">
+<link rel="stylesheet"
+                           type="text/css"
+                           href="../css/styles.css"/>
 </head>
 <body>
 <div id="content" class="content">
@@ -205,11 +204,11 @@
 TODO: Perhaps mention Slime
 </p>
 
-<div id="outline-container-org53b7fc9" class="outline-2">
-<h2 id="org53b7fc9"><span class="section-number-2">1.</span> Introdução</h2>
+<div id="outline-container-org91a6379" class="outline-2">
+<h2 id="org91a6379"><span class="section-number-2">1.</span> Introdução</h2>
 <div class="outline-text-2" id="text-1">
 
-<div id="org16ea10a" class="figure">
+<div id="orge814d12" class="figure">
 <p><img src="../images/porque-lisp/lisp.jpg" alt="lisp.jpg" />
 </p>
 </div>
@@ -254,8 +253,8 @@ Neste artigo gostaria de partilhar o que torna esta linguagem especial para mim,
 </div>
 </div>
 
-<div id="outline-container-orgce3dc20" class="outline-2">
-<h2 id="orgce3dc20"><span class="section-number-2">2.</span> A que me refiro com "Lisp"</h2>
+<div id="outline-container-org32cb676" class="outline-2">
+<h2 id="org32cb676"><span class="section-number-2">2.</span> A que me refiro com "Lisp"</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Sendo Lisp uma família de linguagens, muitas vezes quando o seu nome é mencionado não é muito claro a qual linguagem em especifico se refere.
@@ -281,8 +280,8 @@ Queria deixar claro que, quando me refiro a Lisp, refiro-me unicamente a Common 
 </div>
 </div>
 
-<div id="outline-container-orgebb2f59" class="outline-2">
-<h2 id="orgebb2f59"><span class="section-number-2">3.</span> A história dos Lisps</h2>
+<div id="outline-container-org669e435" class="outline-2">
+<h2 id="org669e435"><span class="section-number-2">3.</span> A história dos Lisps</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> foi originalmente criado por McCarthy, sendo a segunda linguagem mais antiga em uso, perdendo apenas para o <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a> que ainda vê uso extensivo nas áreas de <a href="https://en.wikipedia.org/wiki/High-performance_computing">HPC </a>.
@@ -324,8 +323,8 @@ Não ajuda que houve muitos anos em que Lisp só podia ser rodado em máquinas p
 </div>
 </div>
 
-<div id="outline-container-orgcaf8854" class="outline-2">
-<h2 id="orgcaf8854"><span class="section-number-2">4.</span> Flexibilidade</h2>
+<div id="outline-container-org826c1be" class="outline-2">
+<h2 id="org826c1be"><span class="section-number-2">4.</span> Flexibilidade</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 As linguagens <a href="https://www.tiobe.com/tiobe-index/">mais usadas</a> hoje em dia auto entitulam-se "multi-paradigma", apesar disso, muitas destas parecem não ser muito pragmáticas no que toca a coisas como:
@@ -347,8 +346,8 @@ Quer seja programação imperativa, funcional, evitando estado e métodos destru
 </div>
 </div>
 
-<div id="outline-container-org1a78b2a" class="outline-2">
-<h2 id="org1a78b2a"><span class="section-number-2">5.</span> Interatividade</h2>
+<div id="outline-container-org731e371" class="outline-2">
+<h2 id="org731e371"><span class="section-number-2">5.</span> Interatividade</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Lisp é das linguagens mais interativas que existem, coisas como:
@@ -375,7 +374,7 @@ Numa quaisquer outra linguagem, teríamos de escrever o código, compilar, rodar
 </p>
 
 
-<div id="org145f370" class="figure">
+<div id="org66bbdfa" class="figure">
 <p><img src="../images/porque-lisp/compiling.png" alt="compiling.png" />
 </p>
 </div>
@@ -401,7 +400,7 @@ Se eu chamar essa mesma função sem primeiro a definir, isto é o que acontecer
 </p>
 
 
-<div id="org6917f19" class="figure">
+<div id="orgbc2936e" class="figure">
 <p><img src="../images/porque-lisp/plus1-fail.png" alt="plus1-fail.png" />
 </p>
 </div>
@@ -411,7 +410,7 @@ No debugger aberto, são me apresentadas diversas opções: <sup><a id="fnr.2" c
 </p>
 
 
-<div id="org3726713" class="figure">
+<div id="org3309adc" class="figure">
 <p><img src="../images/porque-lisp/plus1-fail.png" alt="plus1-fail.png" />
 </p>
 </div>
@@ -429,7 +428,7 @@ Se clicar-mos em <code>CONTINUE</code> sem primeiro definir-mos a função, obte
 </p>
 
 
-<div id="orga4abf95" class="figure">
+<div id="org016c569" class="figure">
 <p><img src="../images/porque-lisp/plus1-func.png" alt="plus1-func.png" />
 </p>
 </div>
@@ -439,7 +438,7 @@ Ou se decidir-mos usar a opção <code>USE-VALUE</code>:
 </p>
 
 
-<div id="orge2d9101" class="figure">
+<div id="org5fa51b9" class="figure">
 <p><img src="../images/porque-lisp/use-value.png" alt="use-value.png" />
 </p>
 </div>
@@ -449,15 +448,15 @@ O valor correto será retornado: <sup><a id="fnr.2.100" class="footref" href="#f
 </p>
 
 
-<div id="orga23f4bc" class="figure">
+<div id="org701167b" class="figure">
 <p><img src="../images/porque-lisp/result.png" alt="result.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org164b6bb" class="outline-2">
-<h2 id="org164b6bb"><span class="section-number-2">6.</span> Extensibilidade</h2>
+<div id="outline-container-orgfe0117d" class="outline-2">
+<h2 id="orgfe0117d"><span class="section-number-2">6.</span> Extensibilidade</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Devido à sua sintaxe uniforme baseada à volta de <a href="https://en.wikipedia.org/wiki/Linked_list">listas</a> <sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> e <a href="https://en.wikipedia.org/wiki/Polish_notation">notação Polaca</a>, e considerando que a linguagem foi feita com o intuito de processar listas, isto confére-lhe o poder de <a href="https://en.wikipedia.org/wiki/Homoiconicity">manipular os seu próprio código</a> como se este fossem dados, dando origem a um poderosíssimo sistema de <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)">macros</a>.
@@ -483,8 +482,8 @@ Isto torna a linguagem <del>infinitamente</del> incrivelmente extensível:
 </div>
 </div>
 
-<div id="outline-container-org25dedd1" class="outline-2">
-<h2 id="org25dedd1"><span class="section-number-2">7.</span> Trepando a árvore</h2>
+<div id="outline-container-orgb2b45ec" class="outline-2">
+<h2 id="orgb2b45ec"><span class="section-number-2">7.</span> Trepando a árvore</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Sendo uma simples expressão nada mais que uma lista, consequentemente, um set de expressões umas dentro de outras nada mais é que uma árvore, mais precisamente, a <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Árvore Sintática Abstrata</a>.
@@ -495,7 +494,7 @@ Sendo uma simples expressão nada mais que uma lista, consequentemente, um set d
 </p>
 
 
-<div id="org8f47a4b" class="figure">
+<div id="org643b4e2" class="figure">
 <p><img src="../images/porque-lisp/ast.png" alt="ast.png" />
 </p>
 </div>
@@ -506,8 +505,8 @@ Isto, para além ser inegavelmente elegante, faz com que seja possível <a href=
 </div>
 </div>
 
-<div id="outline-container-org73541d6" class="outline-2">
-<h2 id="org73541d6"><span class="section-number-2">8.</span> As ferramentas</h2>
+<div id="outline-container-org65f5ba1" class="outline-2">
+<h2 id="org65f5ba1"><span class="section-number-2">8.</span> As ferramentas</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Todos as implementações de Lisp que conformem com o <a href="https://standards.incits.org/apps/group_public/project/details.php?project_id=1012">Standard</a> devem incluir, entre outros:
@@ -529,21 +528,21 @@ Sendo o Lisp uma linguagem orientada a objetos, o inspector pode ser usado para 
 </p>
 
 
-<div id="orgbacd479" class="figure">
+<div id="org8ac2e0e" class="figure">
 <p><img src="../images/porque-lisp/inspect-lambda.png" alt="inspect-lambda.png" />
 </p>
 </div>
 
 
 
-<div id="org7d23ab7" class="figure">
+<div id="org6904606" class="figure">
 <p><img src="../images/porque-lisp/inspect-integer.png" alt="inspect-integer.png" />
 </p>
 </div>
 
 
 
-<div id="org2b5a423" class="figure">
+<div id="orga1651ef" class="figure">
 <p><img src="../images-porque-lisp/inspect-string.png" alt="inspect-string.png" />
 </p>
 </div>
@@ -554,16 +553,16 @@ O stepper é uma espécie de  interpretador passo-a-passo, à la <a href="https:
 </div>
 </div>
 
-<div id="outline-container-org277c406" class="outline-2">
-<h2 id="org277c406"><span class="section-number-2">9.</span> O menos bom</h2>
+<div id="outline-container-org729162c" class="outline-2">
+<h2 id="org729162c"><span class="section-number-2">9.</span> O menos bom</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Apesar de todos os pontos mencionados em cima, nem tudo é um mar de rosas.
 </p>
 </div>
 
-<div id="outline-container-orge5fe377" class="outline-3">
-<h3 id="orge5fe377"><span class="section-number-3">9.1.</span> O pequeno ecossistema</h3>
+<div id="outline-container-org7c58430" class="outline-3">
+<h3 id="org7c58430"><span class="section-number-3">9.1.</span> O pequeno ecossistema</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 Atualmente esta linguagem tem uma pequena (mas dedicada) comunidade.
@@ -586,8 +585,8 @@ Mesmo assim, a sua stdlib é bastante <a href="https://www.lispworks.com/documen
 </div>
 </div>
 
-<div id="outline-container-org9021b8c" class="outline-3">
-<h3 id="org9021b8c"><span class="section-number-3">9.2.</span> A poeira no sótão</h3>
+<div id="outline-container-org7d0b4d0" class="outline-3">
+<h3 id="org7d0b4d0"><span class="section-number-3">9.2.</span> A poeira no sótão</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Antes de Common Lisp existir, havia vários dialetos de Lisp incompatíveis uns com os outros (Zetalisp, Lisp Machine Lisp, Interlisp, Maclisp, &#x2026;).
@@ -609,8 +608,8 @@ Common Lisp foi feito com compatibilidade com o Maclisp em mente, o que infelizm
 </div>
 </div>
 
-<div id="outline-container-org7182b78" class="outline-2">
-<h2 id="org7182b78"><span class="section-number-2">10.</span> De onde ir daqui</h2>
+<div id="outline-container-org9ef519c" class="outline-2">
+<h2 id="org9ef519c"><span class="section-number-2">10.</span> De onde ir daqui</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Para quem estiver interessado em Lisp, mas preferir o paradigma funcional e uma linguagem mais limpa, minimalista e com material de ensino abundante, recomendo fortemente o Scheme, cujo <a href="https://standards.scheme.org/">Spec</a> tem apenas 1/10 do tamanho do de C.
@@ -622,8 +621,8 @@ Não só é o Scheme uma boa introdução ao mundo dos Lisps, como também é um
 </div>
 </div>
 
-<div id="outline-container-orga247fa8" class="outline-2">
-<h2 id="orga247fa8"><span class="section-number-2">11.</span> Ler também</h2>
+<div id="outline-container-orgba1fd9c" class="outline-2">
+<h2 id="orgba1fd9c"><span class="section-number-2">11.</span> Ler também</h2>
 <div class="outline-text-2" id="text-11">
 <ol class="org-ol">
 <li><a href="https://mikelevins.github.io/posts/2020-12-18-repl-driven/">On repl-driven programming</a></li>
@@ -634,7 +633,7 @@ Não só é o Scheme uma boa introdução ao mundo dos Lisps, como também é um
 </ol>
 
 
-<div id="orga515849" class="figure">
+<div id="orgb9008aa" class="figure">
 <p><img src="../images/porque-lisp/lisp_cycles.png" alt="lisp_cycles.png" />
 </p>
 </div>
