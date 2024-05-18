@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
 <head>
-<!-- 2024-05-16 qui 20:31 -->
+<!-- 2024-05-18 sáb 17:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Porquê Common Lisp</title>
@@ -208,7 +208,7 @@ TODO: Perhaps mention Slime
 <h2 id="org91a6379"><span class="section-number-2">1.</span> Introdução</h2>
 <div class="outline-text-2" id="text-1">
 
-<div id="orgb21a9d0" class="figure">
+<div id="org4f8932b" class="figure">
 <p><img src="../images/porque-lisp/lisp.jpg" alt="lisp.jpg" />
 </p>
 </div>
@@ -228,15 +228,15 @@ Lisp is the greatest single programming language ever designed
 </blockquote>
 
 <p>
-Frequentemente durante conversas sobre linguagens de programação, o nome "Lisp" é  mencionado.
+É praticamente inevitavel ouvir a palavra "Lisp" quando linguagens de programação são discutidas.
 </p>
 
 <p>
-Usualmente a menção desta mística e misteriosa linguagem desperta a curiosidade de uns&#x2026;
+Usualmente a menção desta mística e misteriosa linguagem desperta a curiosidade de uns.
 </p>
 
 <p>
-&#x2026; Outras vezes a única coisa que este parece despertar é um trauma de parênteses reprimido por muitos anos&#x2026;
+Enquanto que outras vezes a única coisa que este nome parece despertar é um trauma de parênteses reprimido por muitos anos.
 </p>
 
 <p>
@@ -244,7 +244,7 @@ Tanta conversa sobre esta linguagem antiga estranhou-me um pouco, especialmente 
 </p>
 
 <p>
-Após aprender a programar em Lisp, posso dizer que esta linguagem abriu-me os olhos para um novo paradigma de desenvolvimento, um paradigma mais flexível, mais rápido e mais interativo.
+Após aprender a programar em Lisp, posso dizer que esta abriu-me os olhos para um novo paradigma de desenvolvimento, um paradigma mais flexível, mais rápido e mais interativo.
 </p>
 
 <p>
@@ -253,11 +253,11 @@ Neste artigo gostaria de partilhar o que torna esta linguagem especial para mim,
 </div>
 </div>
 
-<div id="outline-container-org32cb676" class="outline-2">
-<h2 id="org32cb676"><span class="section-number-2">2.</span> A que me refiro com "Lisp"</h2>
+<div id="outline-container-orgcf0c317" class="outline-2">
+<h2 id="orgcf0c317"><span class="section-number-2">2.</span> Ao que me refiro com "Lisp"</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Sendo Lisp uma família de linguagens, muitas vezes quando o seu nome é mencionado não é muito claro a qual linguagem em especifico se refere.
+Sendo Lisp uma família de linguagens, muitas vezes quando o seu nome é mencionado não é muito claro a qual linguagem em especifico este se refere.
 </p>
 
 <p>
@@ -292,25 +292,20 @@ Quase 7 décadas após a sua criação, Lisp ainda é visto favoravelmente, send
 </p>
 
 <p>
-O Lisp original  foi inicialmente concebido como uma notação para processamento de listas (LISt Processing), e ao longo da sua evolução foi pioneiro de vários conceitos como:
+O primeiro Lisp foi inicialmente concebido como uma notação para processamento de listas (LISt Processing), e ao longo da sua evolução foi pioneiro de vários conceitos como:
 </p>
 
 <ul class="org-ul">
 <li>A <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a></li>
-
 <li>Garbage Collection</li>
-
 <li><a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)">Recursão</a></li>
-
 <li><a href="https://en.wikipedia.org/wiki/Higher-order_function">Funções de ordem superior</a></li>
-
 <li><a href="https://en.wikipedia.org/wiki/Dynamic_programming_language">Dynamic Typing</a></li>
-
 <li>Entre outras&#x2026;</li>
 </ul>
 
 <p>
-Atualmente a linguagem já não tem a mesma presença na industria e academia de outrora, mas nem sempre foi assim, houve um altura em que este era muito usado na comunidade académica, especialmente na área de inteligência artificial.
+Atualmente a linguagem já não tem a mesma presença na industria e academia de outrora, mas nem sempre foi assim, houve um altura em que Lisp era muito usado na comunidade académica, especialmente na área de inteligência artificial.
 </p>
 
 <p>
@@ -332,7 +327,7 @@ As linguagens <a href="https://www.tiobe.com/tiobe-index/">mais usadas</a> hoje 
 
 <ul class="org-ul">
 <li>Evitar/indicar operações destrutivas. Será que aquele método split() vai modificar a string in-place ou retornar uma nova?</li>
-<li>Ter boas funções anónimas (lambdas).</li>
+<li>Ter (boas) funções anónimas (lambdas).</li>
 <li>Otimização (ou a sua inexistência) de chamadas recursivas.</li>
 </ul>
 
@@ -341,7 +336,7 @@ Lisp, apesar de ser imperativo, funcional e orientado a objetos, nunca força qu
 </p>
 
 <p>
-Quer seja programação imperativa, funcional, evitando estado e métodos destrutivos, ou até orientada a objetos, a linguagem nunca me fez sentir constringido por escolher um destes paradigmas em vez de outro. <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+Quer seja programação imperativa, funcional, evitando estado e métodos destrutivos, ou até orientada a objetos, a linguagem nunca me fez sentir limitado por escolher um destes paradigmas em vez de outro. <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
 </p>
 </div>
 </div>
@@ -357,7 +352,7 @@ Lisp é das linguagens mais interativas que existem, coisas como:
 <li>Redefinir uma função enquanto o programa corre.</li>
 <li>Redefinir uma função enquanto esta <b>mesma</b> está a ser executada.</li>
 <li>Chamar propositadamente uma função ainda não definida para depois a definir.</li>
-<li>Abrir o debugger quando um erro é encontrado, ao invez de parar a execução e crashar.</li>
+<li>Abrir o debugger quando um erro é encontrado, ao invez de parar a execução do processo e crashar.</li>
 <li>Fazer <b>tudo</b> isto remotamente, numa binária a ser executada.</li>
 </ul>
 
@@ -374,7 +369,7 @@ Numa quaisquer outra linguagem, teríamos de escrever o código, compilar, rodar
 </p>
 
 
-<div id="orge448d7f" class="figure">
+<div id="org0bbc97e" class="figure">
 <p><img src="../images/porque-lisp/compiling.png" alt="compiling.png" />
 </p>
 </div>
@@ -400,7 +395,7 @@ Se eu chamar essa mesma função sem primeiro a definir, isto é o que acontecer
 </p>
 
 
-<div id="orga3de3a7" class="figure">
+<div id="org25556e8" class="figure">
 <p><img src="../images/porque-lisp/plus1-fail.png" alt="plus1-fail.png" />
 </p>
 </div>
@@ -410,7 +405,7 @@ No debugger aberto, são me apresentadas diversas opções: <sup><a id="fnr.2" c
 </p>
 
 
-<div id="org7b4c144" class="figure">
+<div id="org89a033a" class="figure">
 <p><img src="../images/porque-lisp/plus1-fail.png" alt="plus1-fail.png" />
 </p>
 </div>
@@ -428,7 +423,7 @@ Se clicar-mos em <code>CONTINUE</code> sem primeiro definir-mos a função, obte
 </p>
 
 
-<div id="orgdbaee4c" class="figure">
+<div id="orgf0a27b8" class="figure">
 <p><img src="../images/porque-lisp/plus1-func.png" alt="plus1-func.png" />
 </p>
 </div>
@@ -438,7 +433,7 @@ Ou se decidir-mos usar a opção <code>USE-VALUE</code>:
 </p>
 
 
-<div id="org26d8ed8" class="figure">
+<div id="orgbbf9031" class="figure">
 <p><img src="../images/porque-lisp/use-value.png" alt="use-value.png" />
 </p>
 </div>
@@ -448,7 +443,7 @@ O valor correto será retornado: <sup><a id="fnr.2.100" class="footref" href="#f
 </p>
 
 
-<div id="orgd1c9067" class="figure">
+<div id="org364eba5" class="figure">
 <p><img src="../images/porque-lisp/result.png" alt="result.png" />
 </p>
 </div>
@@ -459,15 +454,15 @@ O valor correto será retornado: <sup><a id="fnr.2.100" class="footref" href="#f
 <h2 id="orgfe0117d"><span class="section-number-2">6.</span> Extensibilidade</h2>
 <div class="outline-text-2" id="text-6">
 <p>
-Devido à sua sintaxe uniforme baseada à volta de <a href="https://en.wikipedia.org/wiki/Linked_list">listas</a> <sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> e <a href="https://en.wikipedia.org/wiki/Polish_notation">notação Polaca</a>, e considerando que a linguagem foi feita com o intuito de processar listas, isto confére-lhe o poder de <a href="https://en.wikipedia.org/wiki/Homoiconicity">manipular os seu próprio código</a> como se este fossem dados, dando origem a um poderosíssimo sistema de <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)">macros</a>.
+Devido à sua sintaxe uniforme baseada à volta de <a href="https://en.wikipedia.org/wiki/Linked_list">listas</a> <sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> e <a href="https://en.wikipedia.org/wiki/Polish_notation">notação Polaca</a>, e considerando que a linguagem foi feita com o intuito de processar listas, isto confére-lhe o poder de <a href="https://en.wikipedia.org/wiki/Homoiconicity">manipular o seu próprio código</a> como se este fossem dados, dando origem a um poderosíssimo sistema de <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)">macros</a>.
 </p>
 
 <p>
-Este sistema de macros permite coisas que geralmente teriam de ser implementadas pela implementação/compilador em si, possam ser implementadas usando macros.
+Macros esses que permitem coisas que geralmente teriam de ser implementadas pela implementação/compilador em si, possam ser implementadas usando macros.
 </p>
 
 <p>
-Coisas como o sistema de objetos do Common Lisp (CLOS) foram inicialmente implementadas usando macros!
+Coisas como o sistema de objetos do Common Lisp (CLOS) foram inicialmente implementados usando macros!
 </p>
 
 <p>
@@ -486,7 +481,7 @@ Isto torna a linguagem <del>infinitamente</del> incrivelmente extensível:
 <h2 id="orgb2b45ec"><span class="section-number-2">7.</span> Trepando a árvore</h2>
 <div class="outline-text-2" id="text-7">
 <p>
-Sendo uma simples expressão nada mais que uma lista, consequentemente, um set de expressões umas dentro de outras nada mais é que uma árvore, mais precisamente, a <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Árvore Sintática Abstrata</a>.
+Sendo uma expressão nada mais que uma lista, consequentemente, um set de expressões umas dentro de outras nada mais é que uma árvore, mais precisamente, a <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Árvore Sintática Abstrata</a>.
 </p>
 
 <p>
@@ -494,7 +489,7 @@ Sendo uma simples expressão nada mais que uma lista, consequentemente, um set d
 </p>
 
 
-<div id="orgd485c59" class="figure">
+<div id="org015cb42" class="figure">
 <p><img src="../images/porque-lisp/ast.png" alt="ast.png" />
 </p>
 </div>
@@ -528,22 +523,22 @@ Sendo o Lisp uma linguagem orientada a objetos, o inspector pode ser usado para 
 </p>
 
 
-<div id="orga91c083" class="figure">
+<div id="orgb8cc2b2" class="figure">
 <p><img src="../images/porque-lisp/inspect-lambda.png" alt="inspect-lambda.png" />
 </p>
 </div>
 
 
 
-<div id="orga9673e9" class="figure">
+<div id="org990de02" class="figure">
 <p><img src="../images/porque-lisp/inspect-integer.png" alt="inspect-integer.png" />
 </p>
 </div>
 
 
 
-<div id="orgdbcba78" class="figure">
-<p><img src="../images-porque-lisp/inspect-string.png" alt="inspect-string.png" />
+<div id="orgd7cb4e8" class="figure">
+<p><img src="../images/porque-lisp/inspect-string.png" alt="inspect-string.png" />
 </p>
 </div>
 
@@ -565,7 +560,7 @@ Apesar de todos os pontos mencionados em cima, nem tudo é um mar de rosas.
 <h3 id="org7c58430"><span class="section-number-3">9.1.</span> O pequeno ecossistema</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
-Atualmente esta linguagem tem uma pequena (mas dedicada) comunidade.
+Atualmente Lisp tem uma pequena (mas dedicada) comunidade.
 </p>
 
 <p>
@@ -580,7 +575,7 @@ Consequentemente, apesar de existirem <a href="https://github.com/CodyReichert/a
 </ul>
 
 <p>
-Mesmo assim, a sua stdlib é bastante <a href="https://www.lispworks.com/documentation/HyperSpec/Front/X_AllSym.htm">abrangente</a>.
+Felizmente, a sua stdlib é bastante <a href="https://www.lispworks.com/documentation/HyperSpec/Front/X_AllSym.htm">abrangente</a>, o que reduz um pouco a necessidade de recorrer a livrarias externas.
 </p>
 </div>
 </div>
@@ -589,7 +584,7 @@ Mesmo assim, a sua stdlib é bastante <a href="https://www.lispworks.com/documen
 <h3 id="org7d0b4d0"><span class="section-number-3">9.2.</span> A poeira no sótão</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
-Antes de Common Lisp existir, havia vários dialetos de Lisp incompatíveis uns com os outros (Zetalisp, Lisp Machine Lisp, Interlisp, Maclisp, &#x2026;).
+Antes de Common Lisp existir, existiam vários dialetos de Lisp incompatíveis uns com os outros (Zetalisp, Lisp Machine Lisp, Interlisp, Maclisp, &#x2026;).
 </p>
 
 <p>
@@ -612,7 +607,7 @@ Common Lisp foi feito com compatibilidade com o Maclisp em mente, o que infelizm
 <h2 id="org9ef519c"><span class="section-number-2">10.</span> De onde ir daqui</h2>
 <div class="outline-text-2" id="text-10">
 <p>
-Para quem estiver interessado em Lisp, mas preferir o paradigma funcional e uma linguagem mais limpa, minimalista e com material de ensino abundante, recomendo fortemente o Scheme, cujo <a href="https://standards.scheme.org/">Spec</a> tem apenas 1/10 do tamanho do de C.
+Para quem estiver interessado em Lisp, mas preferir o paradigma funcional e uma linguagem mais "limpa", minimalista e com material de ensino abundante, recomendo fortemente o Scheme, cujo <a href="https://standards.scheme.org/">Spec</a> tem apenas 1/10 do tamanho do de C.
 </p>
 
 <p>
@@ -634,7 +629,7 @@ Não só é o Scheme uma boa introdução ao mundo dos Lisps, como também é um
 </ol>
 
 
-<div id="org6d1f246" class="figure">
+<div id="orgd773ef3" class="figure">
 <p><img src="../images/porque-lisp/lisp_cycles.png" alt="lisp_cycles.png" />
 </p>
 </div>
@@ -657,7 +652,7 @@ De notar que a interface, capacidades do debugger e apresentação de valores po
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-Outro mito comum é que este apenas tem uma única estrutura de dados, a lista, isto não é verdade, apesar de todo o programa em si ser de facto uma lista, este programa pode usar diversas estruturas de dados como arrays, hash tables, etc&#x2026;
+Outro mito comum é que este apenas tem uma única estrutura de dados, a lista, isto não é verdade, apesar de todo o programa em si ser de facto constituido por listas, este programa pode usar diversas estruturas de dados como arrays, hash tables, etc&#x2026;
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
@@ -679,5 +674,8 @@ Fun fact: Javascript inicialmente era suposto ser um <a href="https://en.wikiped
 
 </div>
 </div></div>
+<div id="postamble" class="status">
+<p class="postamble">The content under this site is licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA </a>.</p>
+</div>
 </body>
 </html>
