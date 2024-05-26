@@ -20,13 +20,17 @@ p.postamble { text-align: center; }
 
 /* Inspired by rose pine dawn */
 body {
+    
     background-color: #faf4ed;
+    
     h1, h2, h3, h4, h5, h6 {
         color: #56949f;
     }
+    
     p, li {
         color: #575279;
     }
+    
     a {
         transition:.7s;
     }
@@ -34,7 +38,9 @@ body {
         color: #ea9d34;
         text-decoration: none;
     }
-
+    a:visited{
+        text-decoration: none;
+    }
     a:hover {
         color: #b4637a;
         text-decoration: none;
@@ -42,9 +48,7 @@ body {
     a:active {
         text-decoration: none;
     }
-    a:visited{
-        text-decoration: none;
-    }
+    
     code {
         color: #907aa9;
     }
