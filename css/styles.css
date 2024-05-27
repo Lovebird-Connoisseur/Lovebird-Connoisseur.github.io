@@ -21,19 +21,21 @@ p.preamble {
 }
 p.postamble { text-align: center; }
 
-/* Inspired by rose pine dawn */
+label {
+    width: 80%;
+    display: inline-block;
+    text-align: right;
+}
+
+/* Inspired by rose pine colorscheme */
 body {
-    
     background-color: #faf4ed;
-    
     h1, h2, h3, h4, h5, h6 {
         color: #56949f;
     }
-    
     p, li {
         color: #575279;
     }
-    
     a {
         transition:.7s;
     }
@@ -51,9 +53,37 @@ body {
     a:active {
         text-decoration: none;
     }
-    
     code {
         color: #907aa9;
     }
 }
 
+body:has(#dark:checked){
+    background-color: #232136;
+    h1, h2, h3, h4, h5, h6 {
+        color: #9ccfd8;
+    }
+    p, li {
+        color: #e0def4;
+    }
+    a {
+        transition:.7s;
+    }
+    a:link {
+        color: #f6c177;
+        text-decoration: none;
+    }
+    a:visited{
+        text-decoration: none;
+    }
+    a:hover {
+        color: #eb6f92;
+        text-decoration: none;
+    }
+    a:active {
+        text-decoration: none;
+    }
+    code {
+        color: #c4a7e7;
+    }
+}
