@@ -22,6 +22,10 @@ p.preamble {
 }
 
 p.postamble { text-align: center; }
+p.contacts {
+    text-align: center;
+    word-spacing: 15px;
+}
 
 label {
     width: 80%;
