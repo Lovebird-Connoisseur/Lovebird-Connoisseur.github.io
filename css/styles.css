@@ -18,7 +18,9 @@ body :not(:is(h1,h2,h3,h4,h5,h6)) {
 /* center the html postamble */
 p.preamble {
     word-spacing: 15px;
+    font-weight: bold;
 }
+
 p.postamble { text-align: center; }
 
 label {
@@ -48,7 +50,7 @@ body {
     }
     a:hover {
         color: #b4637a;
-        text-decoration: none;
+        text-decoration: underline;
     }
     a:active {
         text-decoration: none;
@@ -78,7 +80,7 @@ body:has(#dark:checked){
     }
     a:hover {
         color: #eb6f92;
-        text-decoration: none;
+        text-decoration: underline;
     }
     a:active {
         text-decoration: none;
