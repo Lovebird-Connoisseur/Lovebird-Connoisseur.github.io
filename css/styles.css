@@ -21,7 +21,12 @@ p.preamble {
     font-weight: bold;
 }
 
+p.blogName {
+    font-weight: bold;
+}
+
 p.postamble { text-align: center; }
+
 p.contacts {
     text-align: center;
     word-spacing: 15px;
