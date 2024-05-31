@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-05-31 sex 01:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why no one uses functional languages (1998)</title>
+<meta name="author" content="Lovebird Connoisseur" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet"
+                           type="text/css"
+                           href="../css/styles.css"/>
+</head>
+<body>
+<div id="preamble" class="status">
+<p class="blogName">Lovebird Connoisseur's Blog</p>
+               <p class="preamble">
+                 <a href="https://lovebird-connoisseur.github.io">HOME</a> 
+                 <a href="https://lovebird-connoisseur.github.io/html/archive.html">ARCHIVE</a> 
+                 <label>
+                   <input id="dark" type="checkbox" style="opacity:0;" />🌑
+                 </label>
+               </p>
+               <hr />
+</div>
+<div id="content" class="content">
+<h1 class="title">Why no one uses functional languages (1998)</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgba36f47">1. Introduction</a></li>
+<li><a href="#org72bcadc">2. The reasons</a>
+<ul>
+<li><a href="#org516f882">2.1. "Not playing well" with others</a></li>
+<li><a href="#orga74e152">2.2. The ecosystem (or lack thereof)</a></li>
+<li><a href="#org8c91b58">2.3. Availability on different architectures/OSes</a></li>
+<li><a href="#orgc2d008f">2.4. How easy it is to get started</a></li>
+<li><a href="#orgaea4bde">2.5. Support and stability</a></li>
+<li><a href="#org3d6b29a">2.6. Familiarity</a></li>
+</ul>
+</li>
+<li><a href="#org9eea650">3. The non-reasons</a>
+<ul>
+<li><a href="#org92905a9">3.1. Performance</a></li>
+<li><a href="#org26363dc">3.2. Ignorance</a></li>
+</ul>
+</li>
+<li><a href="#orgdf06710">4. My opinion</a>
+<ul>
+<li><a href="#orgeec4a6d">4.1. Yesterday's computer landscape was a lot greener</a></li>
+<li><a href="#org328a5dd">4.2. Today's landscape is a lot quicker</a></li>
+<li><a href="#org043462b">4.3. The internet revolution</a></li>
+<li><a href="#org25e5ac9">4.4. Tools: Now and then</a></li>
+<li><a href="#org276d018">4.5. Unfamiliarity and prejudice</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgba36f47" class="outline-2">
+<h2 id="orgba36f47"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://dl.acm.org/doi/10.1145/286385.286387">Why no one uses functional languages</a> is a (very concise and easy to read <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>)  paper written by Philip Wadler.
+</p>
+
+<p>
+Although the article talks about functional languages in particular, I believe many of its points also apply to other, non-functional languages.
+</p>
+
+<p>
+The article lays out a set of points where functional languages fall short, thus hurting their adoption both by hobbyists and the industry.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72bcadc" class="outline-2">
+<h2 id="org72bcadc"><span class="section-number-2">2.</span> The reasons</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org516f882" class="outline-3">
+<h3 id="org516f882"><span class="section-number-3">2.1.</span> "Not playing well" with others</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Today's programs often leverage code written in other languages through the use of <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">Foreign Function Interfaces</a>.
+</p>
+
+<p>
+Even popular languages like <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">Python</a> are often described as being "glue" to programs written using other languages.
+</p>
+
+<p>
+This description is not entirely without merit, considering that some of Pythons major libraries like <a href="https://numpy.org/">numpy</a>, <a href="https://scipy.org/">SciPy</a> and even its <a href="https://docs.python.org/3/library/index.html">standard library</a> (!) are <a href="https://github.com/numpy/numpy">implemented in C</a>.
+</p>
+
+<p>
+The problem with some languages is that reaching out to foreign code breaks their model and/or negates their advantages.
+</p>
+
+<p>
+TODO: Add and expand examples.
+</p>
+
+<p>
+Things like side effects, lack of purity, terrible stack traces and harder to debug problems are all a consequences of this.
+</p>
+
+<p>
+For this reason some languages prefer to keep to themselves and their little worlds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga74e152" class="outline-3">
+<h3 id="orga74e152"><span class="section-number-3">2.2.</span> The ecosystem (or lack thereof)</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The lack of libraries increases the chances that people working with that particular language will need to, sooner or later, implement something that probably would be provided as a library in another, more popular language. Be it GUI libraries, ML ones, https, etc&#x2026;
+</p>
+
+<p>
+This increases the programmers workload and the time needed to complete a project, which can entirely outweigh the advantages given by using that language in the first place. Thus leading to companies opting for more mainstream languages.
+</p>
+
+<p>
+On the other hand, certain libraries can also promote language adoption, take <a href="https://www.tcl.tk/software/tcltk/">TK</a> for <a href="https://www.tcl.tk/">TCL</a>, or <a href="https://www.djangoproject.com/">django</a> for Python, or even <a href="https://rubyonrails.org/">Ruby on Rails</a> for <a href="https://www.ruby-lang.org/">Ruby</a> (duh!). Chances are, even if you never touched any of these languages, you probably heard of these libraries/frameworks in passing.
+</p>
+
+<p>
+TODO: Give more examples.
+</p>
+
+<p>
+All the above solve real problems, Tk made TCL <a href="https://www.tcl.tk/about/uses.html#:~:text=In%20the%20early%20years%2C%20Tk,C%20and%20C%2B%2B%20oriented%20toolkits.">very attractive</a> for putting together quick and simple GUIs, things like Selenium, Django and flask made Python very attractive for web scraping and back-end and so forth&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8c91b58" class="outline-3">
+<h3 id="org8c91b58"><span class="section-number-3">2.3.</span> Availability on different architectures/OSes</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Not <i>all</i> software is intended to run on a browser or on a major OS.
+</p>
+
+<p>
+Maybe the program you're writing is intended to run on some old SPARCstation, perhaps its intended to run on a MIPS router, or maybe its for an IBM Mainframe.
+</p>
+
+<p>
+Many smaller languages don't have the means nor the manpower to port their implementations to these platforms. And while some of the above examples may not be very convincing, consider things like embedded devices (like your home appliances), financial institutions, healthcare, and <a href="https://www.ibm.com/docs/en/zos-basic-skills?topic=vmt-who-uses-mainframes-why-do-they-do-it">many more</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc2d008f" class="outline-3">
+<h3 id="orgc2d008f"><span class="section-number-3">2.4.</span> How easy it is to get started</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Is the language and its tooling easy to obtain, install and use?
+</p>
+
+<p>
+What about learning resources? Are those widely available?
+</p>
+
+<p>
+Is the documentation up to date? (if it even has that)
+</p>
+
+<p>
+No one wants to <i>have</i> to delve into the source code to learn how something works, be it a program you just installed, or a language.
+</p>
+
+<p>
+Furthermore, it is <i>especially</i> unnerving when you're trying to get up to speed and use that particular tool to solve a real problem and you get constantly bogged down by these problems.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgaea4bde" class="outline-3">
+<h3 id="orgaea4bde"><span class="section-number-3">2.5.</span> Support and stability</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Is it a new language?
+</p>
+
+<p>
+Are newer versions backwards compatible?
+</p>
+
+<p>
+How frequent are breaking changes?
+</p>
+
+
+<p>
+What guarantees that the language will continue to be developed? Who's pushing it?
+</p>
+
+<p>
+A big company?
+</p>
+
+<p>
+A small one?
+</p>
+
+<p>
+Just a hobbyist on his free-time?
+</p>
+
+<p>
+Learning a new language requires an investment, if that language gets discontinued/abandoned, all that investment goes down the drain.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3d6b29a" class="outline-3">
+<h3 id="org3d6b29a"><span class="section-number-3">2.6.</span> Familiarity</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Its no secret that programmers are more familiar with imperative and object oriented languages.
+</p>
+
+<p>
+Other paradigms impose different ways of thinking about and solving problems.
+</p>
+
+<p>
+Trying out different paradigms always takes some getting used to, and can be intimidating.
+</p>
+
+<p>
+Not only does this apply to different paradigms, but also applies to different syntax's. <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<p>
+This makes it especially hard for someone used to <a href="https://en.wikipedia.org/wiki/ALGOL_68">ALGOL</a> family languages to try other families like <a href="https://en.wikipedia.org/wiki/APL_(programming_language)">APL</a>, <a href="https://en.wikipedia.org/wiki/ML_(programming_language)">ML</a>, <a href="https://en.wikipedia.org/wiki/Prolog">Prolog (Logic Programming)</a>, <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a>, <a href="https://en.wikipedia.org/wiki/Forth_(programming_language)">Forth (Stack based)</a>, etc&#x2026;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9eea650" class="outline-2">
+<h2 id="org9eea650"><span class="section-number-2">3.</span> The non-reasons</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The paper also gives 2 non-reasons for not using functional languages, non-reasons as in, the author doesn't believe these are the reasons that make programmers choose other languages.
+</p>
+</div>
+
+<div id="outline-container-org92905a9" class="outline-3">
+<h3 id="org92905a9"><span class="section-number-3">3.1.</span> Performance</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The 90s, when this paper was published, was a era of quick technological process, especially in terms of hardware power.
+</p>
+
+<p>
+Lisp, the <a href="https://en.wikipedia.org/wiki/Functional_programming#History">first functional programming language</a>, saw limited use outside its niche, due to hardware constraints.
+</p>
+
+<p>
+With all the work that went into optimizing languages like Haskell and ML, they come quite close to C-like performance.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org26363dc" class="outline-3">
+<h3 id="org26363dc"><span class="section-number-3">3.2.</span> Ignorance</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The author argues that the above points are a stronger reasons for not choosing functional programming. He argues that while ignorance exists, it has a negligible impact.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf06710" class="outline-2">
+<h2 id="orgdf06710"><span class="section-number-2">4.</span> My opinion</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+I agree with many of the authors points, although it must be noted that some of the languages he talks about have come a long way since then, especially Haskell, where most of the work has gone into.
+</p>
+
+<p>
+Meanwhile, other languages have faded to obscurity, like Miranda, ML/SML, mostly superseded by Haskell and Ocaml, respectively.
+</p>
+</div>
+
+<div id="outline-container-orgeec4a6d" class="outline-3">
+<h3 id="orgeec4a6d"><span class="section-number-3">4.1.</span> Yesterday's computer landscape was a lot greener</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The modern computer landscape bolsters a lot less diversity than it used to (for better and for worse), both in terms of architectures and Operating Systems.
+</p>
+
+<p>
+Gone are the proprietary <a href="https://en.wikipedia.org/wiki/Unix">Unixes</a> like <a href="https://en.wikipedia.org/wiki/HP-UX">HP-UX</a>, <a href="https://en.wikipedia.org/wiki/IBM_AIX">AIX</a>, <a href="https://en.wikipedia.org/wiki/Solaris_(operating_system)">Solaris</a> and <a href="https://en.wikipedia.org/wiki/IRIX">IRIX</a>.
+As are <a href="https://en.wikipedia.org/wiki/BeOS">BeOS</a>, <a href="https://en.wikipedia.org/wiki/MS-DOS">MS-DOS</a> and <a href="https://en.wikipedia.org/wiki/NeXTSTEP">NeXTSTEP</a>.
+</p>
+
+<p>
+Mostly replaced with the Windows, MacOS and Linux trio on the desktop side, Android and iOS on the mobile side.
+</p>
+
+<p>
+Instructions sets also cemented around <a href="https://en.wikipedia.org/wiki/X86">x86</a> and <a href="https://en.wikipedia.org/wiki/ARM_architecture_family">arm</a>, with <a href="https://en.wikipedia.org/wiki/RISC-V">RISC-V</a> as a recent contender, compared to the 90s, when we had:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/DEC_Alpha">Alpha</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Motorola_68000_series">m68k</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SPARC">SPARC</a></li>
+<li><a href="https://en.wikipedia.org/wiki/PowerPC">PowerPC</a></li>
+<li><p>
+<a href="https://en.wikipedia.org/wiki/MIPS_architecture">MIPS</a>
+</p>
+
+<p>
+Most of which aren't on the market anymore.
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org328a5dd" class="outline-3">
+<h3 id="org328a5dd"><span class="section-number-3">4.2.</span> Today's landscape is a lot quicker</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+We have come a long way since 1998, when this paper was first published.
+</p>
+
+<p>
+Nowadays computers have, on average, 12 times the number of clock cycles they used to.
+</p>
+
+<p>
+In 1998, a computer usually had between 16mb and 64mb of ram (TODO: add source), at the time of writing, it's common to see PCs with 8 to 16gb of ram, around a <b>thousand</b> times more memory!
+</p>
+
+<p>
+That, combined with advances in compiler technology, has greatly shortened the gap between functional, garbage collected languages like Haskell and imperative, manually managed memory languages like C and C++.
+</p>
+
+<p>
+Another thing worth mentioning is that most user facing applications today don't need the speeds provided by C, I believe most programs could be written using garbage collected languages and still perform great, with games, OSes <sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> and (possibly) browsers being the exception.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org043462b" class="outline-3">
+<h3 id="org043462b"><span class="section-number-3">4.3.</span> The internet revolution</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+In the late 90s, the majority of the worlds population didn't use the <a href="https://en.wikipedia.org/wiki/Internet#cite_ref-ITCFactsAndFigures-2021_54-0">Internet</a>, nowadays that number has shifted and most people have used and use the internet.
+</p>
+
+<p>
+This has tremendously facilitated both communication and information sharing across the world, it's no coincidence that the phrase "Information at your fingerprints." is now common say.
+</p>
+
+<p>
+It is now easier than ever to learn new technology.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org25e5ac9" class="outline-3">
+<h3 id="org25e5ac9"><span class="section-number-3">4.4.</span> Tools: Now and then</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+This one is less important now than it used to be with the advent of things like <a href="https://microsoft.github.io/language-server-protocol/">LSP</a> and <a href="https://microsoft.github.io/debug-adapter-protocol/">DAP</a>.
+</p>
+
+<p>
+Nowadays language servers trivialize the tooling problem a lot and newer, smaller languages are expected to have a language server available out of the box.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org276d018" class="outline-3">
+<h3 id="org276d018"><span class="section-number-3">4.5.</span> Unfamiliarity and prejudice</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+It's undeniable that imperative and object oriented languages still dominate over others today.
+</p>
+
+<p>
+<a href="https://spectrum.ieee.org/the-top-programming-languages-2023">IEEE Spectrum's top programming languages of 2023</a> shows us that, out of the 20 most popular languages, 17 <sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup> of them are imperative/object oriented first and foremost, with some (limited) support for functional programming.
+</p>
+
+<p>
+Only after the 30th spot do functional languages start showing up.
+</p>
+
+<p>
+This has also been corroborated by my personal experience, seeing the looks I got after asking the lady at the booth in a job fair if they used <a href="https://en.wikipedia.org/wiki/Erlang_(programming_language)">Erlang</a> as part of their stack. <sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>
+</p>
+
+<p>
+Still, functional languages are getting some traction in academia, especially <a href="https://wiki.haskell.org/Haskell_in_education">Haskell</a>, Racket, <a href="https://ocaml.org/academic-users">Ocaml</a> and Scheme. <sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
+</p>
+
+
+<p>
+Where me and Mr. Wadler disagree is when he says those who hold a prejudice against other paradigms are a minority.
+</p>
+
+<p>
+Well, I wouldn't exactly call it prejudice, but, yes, I suppose they don't get it.
+</p>
+
+<p>
+When you're using that particular tool is when you're getting familiar with it, it's way and philosophy, and it's when you try to solve one of your problems using that tool when you see where it shines the most.
+</p>
+
+<p>
+It's one thing hearing about how so much more ergonomic <a href="https://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118">Vim</a> is, how so much more consistent the <a href="https://emacsrocks.com/">Emacs</a> environment is, how <a href="https://wiki.haskell.org/Why_Haskell_matters">Haskell</a> reduces bugs and how <a href="https://paulgraham.com/avg.html">Lisp</a> is much like psychedelics.
+</p>
+
+<p>
+Using those is entirely another thing, so much so that those exact posts that praise X technology convey an entire different meaning after you've actually used X for a while.
+</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Seriously, go read it!
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+See <a href="https://toggl.com/blog/build-horse-programming">here</a> and <a href="https://toggl.com/blog/save-princess-8-programming-languages">here</a>. (and note how Lisp is the one that always works out :3)
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Although there have been <a href="https://en.wikipedia.org/wiki/Lisp_machine">quite</a> <a href="https://en.wikipedia.org/wiki/Burroughs_Large_Systems">a</a> <a href="https://projectoberon.net/">few</a> of <a href="https://en.wikipedia.org/wiki/Xerox_Alto">those</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The exceptions being HTML (a markup language), Matlab and SQL.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Yes, it was a telecommunications company!
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Where it was used in the introductory programming course until 2011.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<hr />
+               <p class="contacts">
+                 <a href="https://github.com/Lovebird-Connoisseur">Github</a>
+                 <a href="mailto:lovebird-connoisseur@tutanota.com">Email</a>
+                </p>
+               <p class="postamble">The content under this site is licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA </a>.</p>
+</div>
+</body>
+</html>

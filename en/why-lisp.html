@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
+<head>
+<!-- 2024-05-31 sex 01:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Porquê Common Lisp</title>
+<meta name="author" content="Lovebird Connoisseur" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet"
+                           type="text/css"
+                           href="../css/styles.css"/>
+</head>
+<body>
+<div id="preamble" class="status">
+<p class="blogName">Lovebird Connoisseur's Blog</p>
+               <p class="preamble">
+                 <a href="https://lovebird-connoisseur.github.io">HOME</a> 
+                 <a href="https://lovebird-connoisseur.github.io/html/archive.html">ARCHIVE</a> 
+                 <label>
+                   <input id="dark" type="checkbox" style="opacity:0;" />🌑
+                 </label>
+               </p>
+               <hr />
+</div>
+<div id="content" class="content">
+<h1 class="title">Porquê Common Lisp</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0280401">1. Introdução</a></li>
+<li><a href="#orgd349f2b">2. Ao que me refiro com "Lisp"</a></li>
+<li><a href="#orgd57b102">3. A história dos Lisps</a></li>
+<li><a href="#orga342b9e">4. Flexibilidade</a></li>
+<li><a href="#orga4be73d">5. Interatividade</a></li>
+<li><a href="#org1e41d75">6. Extensibilidade</a></li>
+<li><a href="#org41150c5">7. Trepando a árvore</a></li>
+<li><a href="#org4765bca">8. As ferramentas</a></li>
+<li><a href="#org990ee1a">9. O menos bom</a>
+<ul>
+<li><a href="#orgdbce188">9.1. O pequeno ecossistema</a></li>
+<li><a href="#org1c5c4ce">9.2. A poeira no sótão</a></li>
+</ul>
+</li>
+<li><a href="#org53be756">10. De onde ir daqui</a></li>
+<li><a href="#org4431cf9">11. Ler também</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0280401" class="outline-2">
+<h2 id="org0280401"><span class="section-number-2">1.</span> Introdução</h2>
+<div class="outline-text-2" id="text-1">
+
+<div id="org5e9ef75" class="figure">
+<p><img src="../../images/porque-lisp/lisp.jpg" alt="lisp.jpg" />
+</p>
+</div>
+
+<p>
+<a href="https://xkcd.com/224/">Fonte</a>
+</p>
+
+<blockquote>
+<p>
+Lisp is the greatest single programming language ever designed
+</p>
+
+<p>
+&#x2013; Alan Kay
+</p>
+</blockquote>
+
+<p>
+É praticamente inevitavel ouvir a palavra "Lisp" quando linguagens de programação são discutidas.
+</p>
+
+<p>
+Usualmente a menção desta mística e misteriosa linguagem desperta a curiosidade de uns.
+</p>
+
+<p>
+Enquanto que outras vezes a única coisa que este nome parece despertar é um trauma de parênteses reprimido por muitos anos.
+</p>
+
+<p>
+Tanta conversa sobre esta linguagem antiga estranhou-me um pouco, especialmente porque até hoje nunca ouvi ninguém a dizer coisas boas sobre <a href="https://en.wikipedia.org/wiki/COBOL">COBOL</a> ou <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a>.
+</p>
+
+<p>
+Após aprender a programar em Lisp, posso dizer que esta abriu-me os olhos para um novo paradigma de desenvolvimento, um paradigma mais flexível, mais rápido e mais interativo.
+</p>
+
+<p>
+Neste artigo gostaria de partilhar o que torna esta linguagem especial para mim, e o que esta tem para oferecer a alguém que nunca a tenha usado.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd349f2b" class="outline-2">
+<h2 id="orgd349f2b"><span class="section-number-2">2.</span> Ao que me refiro com "Lisp"</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Sendo Lisp uma família de linguagens, muitas vezes quando o seu nome é mencionado não é muito claro a qual linguagem em especifico este se refere.
+</p>
+
+<p>
+Queria deixar claro que, quando me refiro a Lisp, refiro-me unicamente a Common Lisp, caso contrário serei mais explicito.
+</p>
+
+<p>
+É importante referir que nem todas as linguagens desta família partilham das mesmas vantagens e desvantagens, outros membros populares desta família são:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a>: Um dialeto minimalista focado no paradigma funcional, usado nas aulas introdutórias de programação do MIT até 2011.</li>
+
+<li><a href="https://clojure.org/">Clojure</a>: Um dialeto focado em imutabilidade e no paradigma funcional, o facto de rodar na <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a> dá-lhe acesso a uma enorme quantidade de bibliotecas de Java.</li>
+
+<li><a href="https://en.wikipedia.org/wiki/Emacs_Lisp">Elisp (Emacs Lisp)</a>: Concebido para ser usado para configurar o <del>sistema operativo</del> editor de texto <a href="https://www.gnu.org/software/emacs/">Emacs</a>.</li>
+
+<li><a href="https://racket-lang.org/">Racket</a>: Descendente do Scheme e usado maioritariamente para implementação de linguagens, como também para fins educativos.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd57b102" class="outline-2">
+<h2 id="orgd57b102"><span class="section-number-2">3.</span> A história dos Lisps</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> foi originalmente criado por McCarthy, sendo a segunda linguagem mais antiga em uso, perdendo apenas para o <a href="https://en.wikipedia.org/wiki/Fortran">Fortran</a> que ainda vê uso extensivo nas áreas de <a href="https://en.wikipedia.org/wiki/High-performance_computing">HPC </a>.
+</p>
+
+<p>
+Quase 7 décadas após a sua criação, Lisp ainda é visto favoravelmente, sendo frequentemente recomendado a outros, e descrito como algo "iluminador".
+</p>
+
+<p>
+O primeiro Lisp foi inicialmente concebido como uma notação para processamento de listas (LISt Processing), e ao longo da sua evolução foi pioneiro de vários conceitos como:
+</p>
+
+<ul class="org-ul">
+<li>A <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a></li>
+<li>Garbage Collection</li>
+<li><a href="https://en.wikipedia.org/wiki/Recursion_(computer_science)">Recursão</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Higher-order_function">Funções de ordem superior</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dynamic_programming_language">Dynamic Typing</a></li>
+<li>Entre outras&#x2026;</li>
+</ul>
+
+<p>
+Atualmente a linguagem já não tem a mesma presença na industria e academia de outrora, mas nem sempre foi assim, houve um altura em que Lisp era muito usado na comunidade académica, especialmente na área de inteligência artificial.
+</p>
+
+<p>
+Mas com o <a href="https://en.wikipedia.org/wiki/AI_winter#The_collapse_of_the_LISP_machine_market">AI Winter</a> dos anos 80 e 90, as verbas e o interesse na área foram gradualmente desaparecendo.
+</p>
+
+<p>
+Não ajuda que houve muitos anos em que Lisp só podia ser rodado em máquinas pessoais <a href="https://en.wikipedia.org/wiki/Lisp_Machines">especialmente</a> desenhadas para o rodar, máquinas essas extremamente caras, cujas companhias não conseguiram acompanhar a velocidade de desenvolvimento do hardware nem resistir ao AI Winter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga342b9e" class="outline-2">
+<h2 id="orga342b9e"><span class="section-number-2">4.</span> Flexibilidade</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+As linguagens <a href="https://www.tiobe.com/tiobe-index/">mais usadas</a> hoje em dia auto entitulam-se "multi-paradigma", apesar disso, muitas destas parecem não ser muito pragmáticas no que toca a coisas como:
+</p>
+
+<ul class="org-ul">
+<li>Evitar/indicar operações destrutivas. Será que aquele método split() vai modificar a string in-place ou retornar uma nova?</li>
+<li>Ter (boas) funções anónimas (lambdas).</li>
+<li>Otimização (ou a sua inexistência) de chamadas recursivas.</li>
+</ul>
+
+<p>
+Lisp, apesar de ser imperativo, funcional e orientado a objetos, nunca força quaisquer um destes paradigmas no programador. Existem sempre várias formas de alcançar um dado objetivo.
+</p>
+
+<p>
+Quer seja programação imperativa, funcional, evitando estado e métodos destrutivos, ou até orientada a objetos, a linguagem nunca me fez sentir limitado por escolher um destes paradigmas em vez de outro. <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga4be73d" class="outline-2">
+<h2 id="orga4be73d"><span class="section-number-2">5.</span> Interatividade</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Lisp é das linguagens mais interativas que existem, coisas como:
+</p>
+
+<ul class="org-ul">
+<li>Redefinir uma função enquanto o programa corre.</li>
+<li>Redefinir uma função enquanto esta <b>mesma</b> está a ser executada.</li>
+<li>Chamar propositadamente uma função ainda não definida para depois a definir.</li>
+<li>Abrir o debugger quando um erro é encontrado, ao invez de parar a execução do processo e crashar.</li>
+<li>Fazer <b>tudo</b> isto remotamente, numa binária a ser executada.</li>
+</ul>
+
+<p>
+São todas possíveis e naturais em Lisp, tendo este sido desenhado com esta maleabilidade em mente.
+</p>
+
+<p>
+Este set de vantagens, especialmente a possibilidade de compilar funções individuais, torna o processo de desenvolvimento altamente interativo, mudando completamente a forma como um programa é construido.
+</p>
+
+<p>
+Numa quaisquer outra linguagem, teríamos de escrever o código, compilar, rodar e testar o programa e, na eventualidade de um bug ou problema que causa-se um crash ser encontrado, teríamos de voltar ao editor, tentar descobrir o bug e corrigi-lo, depois seria necessário voltar compilar novamente o programa todo&#x2026;
+</p>
+
+
+<div id="org61f9288" class="figure">
+<p><img src="../../images/porque-lisp/compiling.png" alt="compiling.png" />
+</p>
+</div>
+
+<p>
+<a href="https://xkcd.com/303/">Fonte</a>
+</p>
+
+<p>
+&#x2026; Para depois tentar alcançar o estado onde o bug se manifestava.
+</p>
+
+<p>
+Vamos pegar noutro exemplo mais concreto:
+</p>
+
+<p>
+Supondo que eu quero criar uma função chamada <code>plus1</code>, que recebe um numérico como argumento e o incrementa por 1.
+</p>
+
+<p>
+Se eu chamar essa mesma função sem primeiro a definir, isto é o que acontecerá:
+</p>
+
+
+<div id="org87f5988" class="figure">
+<p><img src="../../images/porque-lisp/plus1-fail.png" alt="plus1-fail.png" />
+</p>
+</div>
+
+<p>
+No debugger aberto, são me apresentadas diversas opções: <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+
+<div id="org45fc56b" class="figure">
+<p><img src="../../images/porque-lisp/plus1-fail.png" alt="plus1-fail.png" />
+</p>
+</div>
+
+<ol class="org-ol">
+<li><code>CONTINUE</code>: Tentar chamar a função novamente.</li>
+<li><code>USE-VALUE</code>: Chamar uma outra função, passando-lhe o argumento de <code>plus1</code>.</li>
+<li><code>RETRY</code>: Tentar novamente.</li>
+<li><code>*ABORT</code>: Descartar todos estes stack traces chatos e voltar para a REPL, como se nada de mal se tivesse passado.</li>
+<li><code>ABORT</code>: Terminar a atual instância de Lisp e ir dormir.</li>
+</ol>
+
+<p>
+Se clicar-mos em <code>CONTINUE</code> sem primeiro definir-mos a função, obteremos exatamente o mesmo erro, mas se já a definir-mos:
+</p>
+
+
+<div id="org24775fc" class="figure">
+<p><img src="../../images/porque-lisp/plus1-func.png" alt="plus1-func.png" />
+</p>
+</div>
+
+<p>
+Ou se decidir-mos usar a opção <code>USE-VALUE</code>:
+</p>
+
+
+<div id="org7b9ac3a" class="figure">
+<p><img src="../../images/porque-lisp/use-value.png" alt="use-value.png" />
+</p>
+</div>
+
+<p>
+O valor correto será retornado: <sup><a id="fnr.2.100" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+
+<div id="org6cddec1" class="figure">
+<p><img src="../../images/porque-lisp/result.png" alt="result.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e41d75" class="outline-2">
+<h2 id="org1e41d75"><span class="section-number-2">6.</span> Extensibilidade</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Devido à sua sintaxe uniforme baseada à volta de <a href="https://en.wikipedia.org/wiki/Linked_list">listas</a> <sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> e <a href="https://en.wikipedia.org/wiki/Polish_notation">notação Polaca</a>, e considerando que a linguagem foi feita com o intuito de processar listas, isto confére-lhe o poder de <a href="https://en.wikipedia.org/wiki/Homoiconicity">manipular o seu próprio código</a> como se este fossem dados, dando origem a um poderosíssimo sistema de <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)">macros</a>.
+</p>
+
+<p>
+Macros esses que permitem coisas que geralmente teriam de ser implementadas pela implementação/compilador em si, possam ser implementadas usando macros.
+</p>
+
+<p>
+Coisas como o sistema de objetos do Common Lisp (CLOS) foram inicialmente implementados usando macros!
+</p>
+
+<p>
+Isto torna a linguagem <del>infinitamente</del> incrivelmente extensível:
+</p>
+
+<ul class="org-ul">
+<li>Queres usar <a href="https://en.wikibooks.org/wiki/Haskell/Pattern_matching">pattern matching</a> como em <a href="https://www.haskell.org/">Haskell</a>? <a href="https://github.com/guicho271828/trivia/">Sem problema!</a></li>
+<li>Já trabalhastes na <a href="https://www.dyalog.com/case-studies/hercules.htm">Volvo</a> e tens saudades de quando usavas <a href="https://aplwiki.com/">APL</a>? <a href="https://github.com/phantomics/april">Aqui tens!</a></li>
+<li>Pattern matching não é suficiente para ti, também desejavas ter um sistema de tipos <a href="https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system">Hindley-Milner</a>? <a href="https://coalton-lang.github.io/20211010-introducing-coalton/">Okay!</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org41150c5" class="outline-2">
+<h2 id="org41150c5"><span class="section-number-2">7.</span> Trepando a árvore</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Sendo uma expressão nada mais que uma lista, consequentemente, um set de expressões umas dentro de outras nada mais é que uma árvore, mais precisamente, a <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Árvore Sintática Abstrata</a>.
+</p>
+
+<p>
+<code>(+ (* 8 8) (* 4 4))</code>
+</p>
+
+
+<div id="org3d6536a" class="figure">
+<p><img src="../../images/porque-lisp/ast.png" alt="ast.png" />
+</p>
+</div>
+
+<p>
+Isto, para além ser inegavelmente elegante, faz com que seja possível <a href="https://en.wikipedia.org/wiki/Structure_editor">manipular diretamente a árvore sintática</a> do programa, usando ferramentas como o <a href="http://paredit.org/">paredit</a>. <sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4765bca" class="outline-2">
+<h2 id="org4765bca"><span class="section-number-2">8.</span> As ferramentas</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Todos as implementações de Lisp que conformem com o <a href="https://standards.incits.org/apps/group_public/project/details.php?project_id=1012">Standard</a> devem incluir, entre outros:
+</p>
+
+<ul class="org-ul">
+<li>Um compilador ou interpretador</li>
+<li>Um debugger</li>
+<li>Um stepper</li>
+<li>Um inspector</li>
+</ul>
+
+<p>
+O compilador, debugger e alguns dos seus modos de utilização já foram mencionados em cima.
+</p>
+
+<p>
+Sendo o Lisp uma linguagem orientada a objetos, o inspector pode ser usado para inspecionar diferentes tipos de objetos/estruturas de dados:
+</p>
+
+
+<div id="orgdc1500e" class="figure">
+<p><img src="../../images/porque-lisp/inspect-lambda.png" alt="inspect-lambda.png" />
+</p>
+</div>
+
+
+
+<div id="org0e0d396" class="figure">
+<p><img src="../../images/porque-lisp/inspect-integer.png" alt="inspect-integer.png" />
+</p>
+</div>
+
+
+
+<div id="orgfb0aabe" class="figure">
+<p><img src="../../images/porque-lisp/inspect-string.png" alt="inspect-string.png" />
+</p>
+</div>
+
+<p>
+O stepper é uma espécie de  interpretador passo-a-passo, à la <a href="https://github.com/pbv/haskelite">haskelite</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org990ee1a" class="outline-2">
+<h2 id="org990ee1a"><span class="section-number-2">9.</span> O menos bom</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Apesar de todos os pontos mencionados em cima, nem tudo é um mar de rosas.
+</p>
+</div>
+
+<div id="outline-container-orgdbce188" class="outline-3">
+<h3 id="orgdbce188"><span class="section-number-3">9.1.</span> O pequeno ecossistema</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Atualmente Lisp tem uma pequena (mas dedicada) comunidade.
+</p>
+
+<p>
+Consequentemente, apesar de existirem <a href="https://github.com/CodyReichert/awesome-cl">imensas</a> bibliotecas para esta <sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>, o número destas fica muito aquém de linguagens mais mainstream como:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://pypi.org/">Python</a> (~500K)</li>
+<li><a href="https://central.sonatype.com">Java</a> (~600K)</li>
+<li><a href="https://www.nuget.org/">C#</a> (~400K)</li>
+<li><a href="https://www.npmjs.com">Javascript</a> (~2100K!) <sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup></li>
+</ul>
+
+<p>
+Felizmente, a sua stdlib é bastante <a href="https://www.lispworks.com/documentation/HyperSpec/Front/X_AllSym.htm">abrangente</a>, o que reduz um pouco a necessidade de recorrer a livrarias externas.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c5c4ce" class="outline-3">
+<h3 id="org1c5c4ce"><span class="section-number-3">9.2.</span> A poeira no sótão</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Antes de Common Lisp existir, existiam vários dialetos de Lisp incompatíveis uns com os outros (Zetalisp, Lisp Machine Lisp, Interlisp, Maclisp, &#x2026;).
+</p>
+
+<p>
+Common Lisp foi criado com o intuito de ser o sucessor de Maclisp, e rapidamente se tornou o dialeto mais popular, conseguindo unificar a muito fragmentada (na altura) família dos Lisps.
+</p>
+
+<p>
+Common Lisp foi feito com compatibilidade com o Maclisp em mente, o que infelizmente deixou-o com alguma nomenclatura menos clara e funções estranhas, como por exemplo:
+</p>
+
+<ul class="org-ul">
+<li><code>car</code>, <code>cadr</code>, <code>caddr</code>, <code>cdr</code> (para aceder ao primeiro, segundo, terceiro e ao resto da lista respetivamente)</li>
+<li>3 tipos distintos de tabelas: <code>alist</code>, <code>plist</code> e hash-table</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org53be756" class="outline-2">
+<h2 id="org53be756"><span class="section-number-2">10.</span> De onde ir daqui</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Para quem estiver interessado em Lisp, mas preferir o paradigma funcional e uma linguagem mais "limpa", minimalista e com material de ensino abundante, recomendo fortemente o Scheme, cujo <a href="https://standards.scheme.org/">Spec</a> tem apenas 1/10 do tamanho do de C.
+</p>
+
+<p>
+Não só é o Scheme uma boa introdução ao mundo dos Lisps, como também é uma excelente introdução ao mundo da programação em geral, devido à sua simplicidade e a ter dos melhores materiais de ensino. <sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4431cf9" class="outline-2">
+<h2 id="org4431cf9"><span class="section-number-2">11.</span> Ler também</h2>
+<div class="outline-text-2" id="text-11">
+<ol class="org-ol">
+<li><a href="https://mikelevins.github.io/posts/2020-12-18-repl-driven/">On repl-driven programming</a></li>
+<li><a href="https://flownet.com/gat/jpl-lisp.html">Lisping at JPL</a></li>
+<li><a href="https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/">A Road to Common Lisp</a></li>
+<li><a href="https://gigamonkeys.com/book/introduction-why-lisp">Why Lisp</a></li>
+<li><a href="https://www.cs.cmu.edu/%7Edst/LispBook/">Common Lisp: A Gentle Introduction to Symbolic Computation</a></li>
+<li><a href="https://malisper.me/category/debugging-common-lisp/">Debugging Lisp</a></li>
+</ol>
+
+
+<div id="org2a925b5" class="figure">
+<p><img src="../../images/porque-lisp/lisp_cycles.png" alt="lisp_cycles.png" />
+</p>
+</div>
+
+<p>
+<a href="https://stackoverflow.com/questions/22956293/explain-this-lisp-programs-are-trees-of-expressions">Fonte</a>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Um dos (muitos) mitos de Lisp é que esta é uma linguagem unicamente funcional, isto é obviamente falso. Até porque a grande maioria dos projetos que usam Lisp usam-no maioritariamente imperativamente.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+De notar que a interface, capacidades do debugger e apresentação de valores podem variar de implementação para implementação, em todos os exemplos dados foi usado o <a href="http://www.sbcl.org/">SBCL</a> e o <a href="http://joaotavora.github.io/sly/">SLY</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Outro mito comum é que este apenas tem uma única estrutura de dados, a lista, isto não é verdade, apesar de todo o programa em si ser de facto constituido por listas, este programa pode usar diversas estruturas de dados como arrays, hash tables, etc&#x2026;
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Coisa que gradualmente se está a tornar mais popular com coisas como o <a href="https://www.jetbrains.com/mps/">MPS</a> da JetBrains e o <a href="https://tree-sitter.github.io/tree-sitter/">Treesitter</a> da Microsoft. Apesar de Lisp já ter <a href="https://github.com/shaunlebron/history-of-lisp-parens/blob/master/editors.md#interlisp-sedit">editores estruturais</a> nos anos 80.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Provavelmente relacionado com o facto de esta ser uma linguagem antiga.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Fun fact: Javascript inicialmente era suposto ser um <a href="https://en.wikipedia.org/wiki/JavaScript#Creation_at_Netscape">dialeto</a> de Scheme.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://mitpress.mit.edu/9780262560993/the-little-schemer/">The Little Schemer</a> e <a href="https://sarabander.github.io/sicp/">SICP</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<hr />
+               <p class="contacts">
+                 <a href="https://github.com/Lovebird-Connoisseur">Github</a>
+                 <a href="mailto:lovebird-connoisseur@tutanota.com">Email</a>
+                </p>
+               <p class="postamble">The content under this site is licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA </a>.</p>
+</div>
+</body>
+</html>
