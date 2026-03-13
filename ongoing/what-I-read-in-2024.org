@@ -1,0 +1,23 @@
+#+TITLE: What I read in 2024
+#+AUTHOR: Lovebird Connoisseur
+#+DATE:
+#+EMAIL: lovebird-connoisseur@tutanota.com
+#+LANGUAGE: en
+
+* Articles
+
+** A Road to Common Lisp
+
+* Books
+
+** Common Lisp: A Gentle Introduction to Symbolic Computation
+
+** Unix: A History and a Memoir
+
+* Papers
+
+** Why No One Uses Functional Languages (1998)
+
+** A Fork() in the Road
+
+** Don't Make me Think

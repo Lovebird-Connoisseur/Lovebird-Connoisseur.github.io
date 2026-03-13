@@ -1,0 +1,308 @@
+#+TITLE: A look at exotic Operating Systems
+
+* TODO Have a look at different OSes
+
+- Microkernel (Helios, SeL4, QNX, Amiga, Minix)
+- Tag Based FS
+- Versioned FS ([[https://en.wikipedia.org/wiki/OpenVMS][OpenVMS]])
+- Database as a FS ([[https://homes.cs.washington.edu/~levy/capabook/Chapter8.pdf][AS/400]], [[https://en.wikipedia.org/wiki/OpenVMS][OpenVMS]])
+- Written in a high level language ([[https://homes.cs.washington.edu/~levy/capabook/Chapter8.pdf][AS/400]], [[http://www.cfbsoftware.com/modula2/Lilith.pdf][Oberon]], [[http://www.smecc.org/The%20Architecture%20%20of%20the%20Burroughs%20B-5000.htm][Burroughs B5000]])
+- "Image"- based/Inspectable (Smalltalk Machines, Genera)
+- Capability based security ([[https://homes.cs.washington.edu/~levy/capabook/Chapter8.pdf][AS/400]], KeyKOS, EROS)
+- Inter-laguage comunication ([[https://en.wikipedia.org/wiki/OpenVMS#Programming][OpenVMS]])
+
+* TODO
+
+** Notes
+
+- Tags sometimes aren't sufficient, videos and images previews are much more efficient at conveeing information (a picture speaks a thousand words)
+
+** Inspiration
+
+- Symbolics Genera/TI Explorer/Interlisp
+- Oberon
+- Plan9
+- InfernoOS
+- Amiga
+- Linux/BSDs
+- Windows
+- MacOS
+- MireageOS
+- RTOS
+- OS/400
+- VMS
+- [[- https://joshondesign.com/2017/08/18/idealos_essay][IdealOS]]
+- Unix haters handbook
+- Android/iOS
+
+  - mention inconsistency (in terms of flags, regex engines, config language and avaliable options, keybinds, etc)
+
+** Features
+
+- microkernel design (minix, gnu/hurd, qnx, l4, redox, genode)
+- kernel and shell all built using the same language
+- database as a filesystem (BeOS (for metadata), Haiku (for metadata))
+- a stack based clipboard manager
+- Everything is a object
+- A common data format?
+- Windows from different applications can be tabbed (BeOS, HaikuOS)
+- GUI first (CLI too limited to text representable entities only) (plan9, xerox, lisp machines), while still being composable
+
+** Add sources/references
+
+
+* Introduction
+
+Todays most used OSes are the result of countless hours of work, developed over entire decades by multiple entities.
+
+All modern OSes have been inspired, or built atop older ones:
+
+- Linux was inspired Minix, which in turn was inspired by Unix, /which/ in turn was inspired by Multics
+- MacOS was built atop NextSTEP, which was based on BSD Unix, /which/ in tur was based on....
+- Windows was built on top of DOS, which in turn was inspired by CP/M.
+
+All these OSes have long histories, and were built for a long gone era of microcomputers/mainframes which had different priorities back then:
+
+- Microcomputers had vastly less memory than they do today, some of them didn't even have caches
+- Security wasn't nearly as much of a priority back then as it is now (when Unix was being built, the Internet didn't even exist)
+- Many of these OSes started before the invention of the GUI by Xerox, and thus they weren't designed with a Graphical User Interface in mind
+
+Fun fact: the Nintendo switch uses a Microkernel!
+
+
+* Filesystem
+
+My ideal filesystem would have no directories (not sure if it can still be considered a filesystem without directories).
+
+What I mean by this is, everything would sit together somewhere: programs, libraries, user files, configurations, database files, etc... This by itself doesn't confer any advantage over traditional ways of organizing files.
+
+Ideally, file organization would be based around tags, that would be how a user would search for files, for example.
+
+Traditional hierarchies are good for simple use cases, but are woefully inadequate for some situations such as: photos, videos and other media.
+
+Let's check out a more concrete example, without resorting to a photo gallery program, what would be the best way of organizing the pictures I take:
+
+1. By date
+
+Where the directory tree would look like:
+
+Pictures/
+    2024/
+        Italy/
+        France/
+            Paris/
+    2023/
+        Portugal/
+            Lisbon/
+
+2. By place
+
+Pictures/
+    Italy/
+        2024/
+    France/
+        Paris/
+            2024/
+    Portugal/
+        Lisbon/
+            2023/
+
+Now, how do you quickly check if a set of pictures you took at a certain place at a certain time?
+
+Yes, you could trivially compose a (ugly) shell script, perhaps using Bash (eww), but I really believe a tag based system could make data organization much easier.
+
+When the idea of tags comes up, a regular complaint I see is the fact that others assume the user would need to manually tag everything themselves, but I believe there's a better way to do so:
+
+Photos, videos, audio and other type of media have a ton of metadata embedded within them, you could leverage all that metadata to pre-fill tags.
+
+Of course, the user would need to still add/edit some tags, like naming a photo (if they so chose), but most other things (date, resolution, place, file extension, ...) would already be pre-filled, removing most of the work.
+
+Now instead of blindly navigating directories in hopes of finding that old family vacation photo you took in Barcelona, Spain, 3 years ago, a user could simply write:
+
+select file where
+date.year == CURRENT_YEAR - 3
+and
+place.city like 'Barcelona'
+and
+file.type = 'photo'
+
+Now, obviously your average user wouldn't be making SQL queries to manage file directly, it would be done through a file manager-type of app.
+
+TODO: Mockup of file manager app.
+
+The failures of traditional file organization methods are obvious just by looking at apps on phones or desktops, people use dedicated music and gallery apps because their file managers simply aren't enough at dealing with certian kinds of data.
+
+Another advantage to tags would be security, you could have white/blacklists using tags instead of tags, for example, you could grant access to read and modify files whose file.extension like 'pdf' to your pdf reader.
+
+Programs installed would obviously need to have access to their own files and system libraries, so when you installed your, for example, video player, all its files would be tagged as to indicate they belonged to the video player. And the video player itself would have permission to use certain kinds of system libraries defined during the installation.
+
+** Related articles and inspirations
+
+- [[https://arstechnica.com/information-technology/2018/07/the-beos-filesystem/][ The BeOS file system - ars technica]]
+- [[https://www.nayuki.io/page/designing-better-file-organization-around-tags-not-hierarchies][Designing better file organization round tags, not hierarchies]]
+
+TODO: Expand
+*** Versioned
+*** Is a database
+- OS/400
+- IBM I
+- PalmOS
+
+TODO: Try these out!
+[[https://arstechnica.com/gadgets/2008/03/past-present-future-file-systems/][]]
+[[https://en.m.wikipedia.org/wiki/WQL][WQL]], not for files
+[[https://github.com/osquery/osquery][osquery]], not for files
+[[https://en.m.wikipedia.org/wiki/WinFS][WinFS]], never implemented
+[[https://github.com/kashav/fsql][fsql]], not a real database
+[[https://github.com/jhspetersson/fselect][fselect]], not a real database (try this!!!)
+[[https://en.wikipedia.org/wiki/Spotlight_(Apple)][spotlight]]
+
+
+
+* Language Choice
+
+Most operating systems today are programmed in C and C++.
+
+Now, while there's a certain charm to Cs apparent simplicity [1], C (and C++) have numerious downsides, such as:
+
+- Memory (un)safety;
+- Undefined behavior;
+- Weakly typed;
+- ...
+
+All the points above are a cause of a big percentage of bugs in software written in C/C++ [2],
+
+Most high level languages don't share these same downsides, and while most (all?) of them lack Cs speed and ubiquitousness across different architectures, they make up in other areas.
+
+Ideally, the system would be (mostly) written in a high level language. TODO: Expand to say it can drop down to low level using inline assembly or by turning off garbage collection
+
+In fact, many other systems where written in high level languages, such as:
+- [[http://www.projectoberon.net/][Oberon (Pascal)]]
+- [[https://en.wikipedia.org/wiki/Lisp_machine][Lisp Machines (Lisp, duh!)]]
+- [[https://en.wikipedia.org/wiki/Xerox_Star][Xerox Star (Mesa)]]
+- [[https://interlisp.org/][Medley (Common Lisp)]]
+- TODO: mention redox, mezzano, chrysalisp, mirageOS, genode? etc...
+
+
+
+* Shells and Terminals
+
+Most programmers and power users are familiar with their Shells, be it Bash, Powershell, ksh, or just plain old sh.
+
+These languages are frequently used to interact with the system and automate taks, through the usage of scripts. These languages are often very terse (good for quickly conjuring scripts) and make use of external processes. TODO: expand
+
+Despite that, most shells are terrible programming languages, and the worst part is, they're not good shells either!
+
+The problems with shells are many, I'm more familiar with Linux/Unix Shells, so I'll talk more about them here:
+
+1. They have difficulty dealing with spaces in file names [4]
+2. They are terse to the point of unreadability
+3. Types? What are those? Everything is a string!
+4. Obscure and plain weird syntax
+5. Lack of data structures (even arrays in Bash are a pain)
+6. Can't reliably parse untrusted input, see [[https://github.com/jwilk/url.sh][url.sh]] [5]
+7. Don't abort on errors (wtf?) [6]
+8. Funky autocompletion
+9. Mangled output
+
+Yes, yes, some of these are also the fault of still using terminal emulators in CURRENT_YEAR, and there've been some recent effort into making better shells [[https://fishshell.com/][1]], [[https://github.com/com-lihaoyi/Ammonite][2]], [[https://rash-lang.org/][3]], [[https://babashka.org/][4]], [[https://scsh.net/][5]], [[https://murex.rocks/][6]], [[https://elv.sh/][7]], [[https://www.oilshell.org/][8]], [[https://www.nushell.sh/][9]].
+
+Yet even these new attempts at newer shells share some of the problems the old ones did, and some new ones too:
+
+1. They're not as ubiquitous
+2. They're still limited by the terminal
+3. Some of them are not made to be used interactively
+
+Also, most of them are entirelly designed as a shell, and not a programming language.
+
+And to be honest, this is something I don't quite understand.
+
+Why can't I simply ditch the terminal and these old, weird shells and use a real REPL with a real programming language? Something that doesn't treat everything as text, and instead as separate entities (flags, files, programs, ...).
+
+Pipes could be replaced by function composition.
+
+There are some wonderful REPLs out there, with image support [7], wonderful and smart autocompletion, sane error handling and plenty of other perks.
+
+Ideally, the Shell language would be the one used to program the system in too, such that you'd only need to know a single language.
+
+Of course, not all programming languages are suitable for use as (non-)interactive shells, especially those that require a lot of boilerplate code, can't call external programs/processes (not everything can be handled by the same language, or can it?).
+
+** Related articles and inspirations
+
+- [[https://web.archive.org/web/20211106160816/https://ambrevar.xyz/lisp-repl-shell/index.html][Lisp REPL as my main shell]]
+- [[http://www.oilshell.org/blog/2021/01/why-a-new-shell.html][why create a new unix shell]]
+
+TODO: https://arcan-fe.com/2022/10/15/whipping-up-a-new-shell-lashcat9/
+TODO: https://www.divergent-desktop.org/blog/2020/08/10/principles-overview/
+TODO: https://arcan-fe.com/
+TODO: https://github.com/letoram/cat9
+TODO: https://arcan-fe.com/2022/04/02/the-day-of-a-new-command-line-interface-shell/
+TODO: read http://xahlee.info/comp/unix_pipes_and_functional_lang.html and related articles on the same page
+TODO: Do more research about what makes a good shell
+TODO: Look into powershell
+
+
+
+* License
+
+Obviously my dream system would be FOSS.
+
+But using what license, exactly?
+
+I thought a bit about it, and after looking at the subtler differences between FOSS licenses, I chose GPLv3.
+
+Why?
+
+More permissive licenses such as BSD, MIT and Apache don't force other users of your software to release their modifications, thus, they're less incentivized to contribute back [8].
+
+With GPL, users are obligated to contribute changes back.
+
+TODO: GPLv3, or GPLv2 sufficient?
+
+
+* Hyperlinked
+
+You should be able to simply select a function and jump to its implementation, same goes for a program (ideally you'd have the source code for all software running on the machine).
+
+See: emacs (self-documenting, clickable, hyperlinked)
+
+
+* Smaller changes
+    - Change the default icons: Folders aren't self-explaining for non-office workers (and ironically, since the boom of PCs in the workplaces, office equipment is less and less used), folder icons should be replaced with boxes, which are easier to reason about (stuff can be placed inside them).
+
+
+
+TODO
+** Security
+    - Capability based security (iOS, Android)
+    - https://fuchsia.dev/fuchsia-src/concepts/principles/secure
+    - Microkernel (Redox, Minix)
+    - browsers and mobile are vaslty better in this regard (mention sandboxing)
+    - browsers and portability
+** Consistent
+    - Everything is a text buffer (emacs)
+    - Everything is a file (unix, plan9)
+    - Everything is a object (Lisp Machines)
+** fully accessible
+** full mouse and full keyboard support
+*** hyperlinked: functions, documents, files
+** package management? store model?
+** immutability?
+
+
+
+* Footnotes
+
+[1]: Something that I seriously doubt myself.
+
+[2]: That doesn't imply all C and C++ software in inherently buggy or insecure, see [[https://sel4.systems/][seL4]]
+
+[4]: Didn't Plan9s rc shell solve this in the 90s?
+
+[5]: Some shells actually (semi)reliably escape these inputs, such as fish, but even those are not perfect
+
+[6]: https://www.pcworld.com/article/431317/scary-steam-for-linux-bug-erases-all-the-personal-files-on-your-pc.html
+
+[7]: Yes, yes, some terminals support sixel images, kitty can display images, iTerm too.
+
+[8]: That doesn't mean BSD, MIT and Apache licensed software don't recieve contributions from companies and other users that use that same software, in fact, there's plenty of reasons to contribute back! Even if ones not forced to do so.

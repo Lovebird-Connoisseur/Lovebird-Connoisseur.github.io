@@ -1,0 +1,145 @@
+#+TITLE: Things I'm grateful for
+
+TODO: Add links
+
+* Software
+** Emacs
+
+Despite its countless flaws, Emacs remains one of my favorite pieces of software I ever had the pleasure of using.
+
+Emacs achieves what modern day OSes fail to provide, that is, a malleable and (mostly) consistent playground for you to experiment with.
+
+Emacs itself can be modified while it's running and have those changes propagate without the need to close and open it again (or worse, close it, wait for it to compile and then open).
+
+And now for its flaws:
+1. Its text-centered nature makes it very inflexible when it comes to dealing with other types of media like videos, images or even things like spreadsheets.
+2. The fact that it is single threaded creates some sporadic annoyances TODO: Rewrite
+3. Vims way of navigating and manipulating textual content remains superior in terms of ergonomics, although its metaphors quickly fall apart when one gets away from text.
+
+It's extensibility has generated an big community around it, there's pretty much a package for anything imaginable.
+As such, Emacs starts feeling less like a simple text editor and more like a universal text-based interface, much like a terminal, except that:
+1. Programs written for Emacs have much more consistent keybinds and functionality between them [fn:1].
+2. Programs written for Emacs share the same interface, alongside all its conventions.
+3. Emacs has support for graphical capabilities like images and decorated fonts.
+
+** Arch Linux
+
+While Arch wasn't my first distro, it's been the one I've used for the longest time (since 2018).
+
+Previously I had tried to get Debian working on an old pentium 4 computer a few years before but without much success. [fn:3]
+
+While the installation wasn't as smoothly as I would've liked [fn:4], assembling things piece by piece was very illuminating and the result of it was a desktop tinkered to my liking.
+
+Despite its reputation Arch has never given me much trouble in terms of stability, with one notable exception due to a Nvidia update which made it so the computer couldn't boot, thankfully it was easily fixed by changing some kernel parameters.
+
+** Haskell
+
+Before learning Haskell I had only used Python to program in. Seeing Haskell in class was something akin to love at first sight
+
+TODO: mention concise and elegant expression of function compositions could be as powerful as looping and imperative stuff
+
+** Common Lisp
+
+Seeing all the Lisp adoration in places like HackerNews made me curious about what was so special about it.
+
+While I'd be lying if I said Common Lisp wasn't messy in parts, there's something to be said to all it's syntatic elegance and it's unsurpassed abstraction capabilities due to macros.
+
+Its uniform syntax, structural editing capabilities, its vast stdlib and relative high level (even compared to other so-called "high level" languages) make Common Lisp, for all its faults, a incredibly nice language to program in.
+
+TODO: Rewrite, link to lisp article
+
+** pass
+
+Despite its simplicity, this password manager is incredibly easy to integrate with other programs.
+
+** fish
+
+A saner shell.
+
+I don't use it for shell scripts (I don't much use shell scripting), but even as an interactive shell its vastly better due to the saner completion, flag documentation, filename escape.
+
+** ledger
+
+** Treesitter
+
+** LSP
+
+** mpv
+
+** (neo)vim
+
+The genious of Vim lies in the language itself.
+Not vimscript, nor lua but the:
+
+<count><operator><motion><text object>
+
+Despite the simplicity of the language itself, its power is unmatched by any other text editor.
+It's powerfull, flexible, (very) ergonomic and pretty intuitive, once you get the basics down.
+
+Not a day goes by where I don't miss it when using Emacs.
+
+** Torrent
+
+** Linux
+
+** Proton
+
+Plain Wine and Lutris never worked out of the box for most games, this all changed with the introduction of Proton by VALVe, now I can't recall the last time a game didn't run on my system.
+
+All of this provided without the need for any additional tweaking.
+
+** ffmpeg
+
+** Imagemagick
+
+** RSS
+
+** Steam
+
+** uBlock Origin
+
+What can I say? Browsing the web without an adblock is a infuriating experience, having to close the video popups (particularly popular in some news sites), cookie notices, sign in promps, the ads taking 1/3 of the page, ...
+
+One feature I really appreciate is the element picker, which allows one to "zap" elements out of a page, I like using it to remove useless clutter, like useless sidebars with recommendations. TODO: Add more examples
+
+* Hardware
+** DT770
+
+Bought over a decade ago (~2015), and despite daily usage and the occasional abuse (like being dropped), these headphones have remained in working condition.
+
+All parts are pretty much replaceable, with replacements avaliable from the manufacturer. This has come in handy recently (2025) since the pieces that hold the headband to the cups started to crack, but the solution was as easy as buying the replacement parts and screwing the new pieces in place.
+
+One notable exception to this is the cable, which is soldered on. But newer models seem to have correct this flaw.
+
+* Services & Organizations
+** GNU
+
+** Internet Archive
+
+For allowing me to save a part of my childhood memories.
+For preventing information being lost to the sands of time.
+
+
+* Others
+
+** Poetry
+
+** Teachers
+
+** Books
+
+** University
+
+** Cats/Animals/Birds
+
+** Videogames
+
+** Music
+
+* Footnotes
+
+[fn:1] For example, I can expect search by regex to work for anything I open in Emacs, be it my RSS reader (elfeed), my file manager (dired), my music player (EMMS), etc..
+
+[fn:3] Perhaps because I choose the minimal install, and never figured out what Xorg was.
+
+[fn:4] I believe it was only at the 5th try that I managed to get everything like I wanted, I ran into trouble previously due to things like choosing the wrong partition scheme.

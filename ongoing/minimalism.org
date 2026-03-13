@@ -1,0 +1,92 @@
+#+TITLE: When minimalism fosters complexity
+#+DATE: <2024-04-16 tue>
+#+OPTIONS: num:nil html-postamble:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" hred="../styles.css"/>
+
+#+begin_quote
+Do one thing, and do it badly.
+-- Doug McIlroy
+#+end_quote
+
+TODO: Try out powershell, nushell, jc and jq
+TODO: [[https://arcan-fe.com/2022/04/02/the-day-of-a-new-command-line-interface-shell/][read this]]
+
+* What flexibility gives us
+
+When I read John Ousterhout's [[https://web.stanford.edu/~ouster/cgi-bin/aposd.php][A Philosophy of Software Design]], one of the main points he tried to convey was that we should design our abstractions in a way that they aren't too specific to the current problem at hand, he argued that a we should spend a bit of time trying to come up with a more general solution to that problem, so that such an abstraction could latter be reused more easly.
+
+Flexible solutions dominate most of our software landscape [fn:1], from web browsers and their extensions, to code editors with their plugins, from emacs to vim...
+
+* For the most part...
+
+Usually, when one needs to search for and/or [[https://stackoverflow.com/questions/4712521/filtering-linux-command-output][filter]] something, the [[https://www.man7.org/linux/man-pages/man1/grep.1.html][grep]] command is often the tool of choice.
+
+This is fine if we want to filter things on a line by line basis but if you think about it, it doesn't really compose well, does it?
+
+Say, what if you want to see all files created after a certain date?
+
+[[https://unix.stackexchange.com/questions/10041/how-to-get-only-files-created-after-a-date-with-ls][Oh...]] Okay then, maybe grep isn't that general purpose afte all. On the other hand, that find command seems to have a pretty nifty syntax to narrow down its results, let's see how something like git does it!
+
+[[https://stackoverflow.com/questions/30704128/get-commits-since-a-particular-date-in-git-based-on-commit-date][Oh...]]
+
+It seems each program has its own different way to narrow down the range of results.
+
+Those less familiar with Linux might be asking themselves why =grep= can't be used to filter the results of things like the =git log=.
+
+The problem is that =grep= operates on lines of text [fn:2], but =git show= (default) output format is:
+
+commit
+Author
+Date
+
+commit message
+
+Thus, if we attempt to filter the output so it only shows the commits of a give Author using grep, by doing =git show | grep AUTHOR=, it would only return the lines that mentioned the author, this ignoring the commit, date and commit message sections of the commits.
+
+And while on the =git= example be can pass it a flag so it shows the commit, author, date and message all in one line (thus more easy to search for patterns), things get a bit more complicated when it comes to things like...
+
+* The find command
+
+#+begin_quote
+Find came back from Berkeley waving flags.
+-- Rob Pike
+#+end_quote
+
+People like to joke about =tar= [[https://xkcd.com/1168/][flags]]...
+
+Words cannot describe the monster that is the =find= command and its flags... It's not even comparable... Find does everything, its probably even turing complete at this point, lets see:
+
+- Does it have its own filtering language? Yes!
+- Can it delete files? Yes!
+- Can it run external commands on files? Yes!
+- Can it print the filepath? Yes!
+- Can it print the filepath (using a different flag as to handle weird filenames better)? Also yes!
+- Can it cook your dinner and do your laundry? Probably, provided you pass it the correct flags.
+
+By default, =find='s output consists of the relative path to the found set of files. This means you cannot use =grep= to filter things like dates, permissions, and the like.
+
+* Why is the +world+ shell this way?
+
+
+
+* The solution
+
+That's the thing, there's none.
+
+Its like wishing Linux was a single user operating system, or that its security model was more adequate for the problems we face today (program exploits and uhandling untrusted binaries), or that it was all written in memory safe, blazzingly fast Rust.
+
+Its far too late to try to do that! Sure be can bolt on some improvements... But it will be ad-hoc.
+
+Sure, you can mitigate many of those problems using things like [[https://github.com/jqlang/jq][jq]] and [[https://github.com/kellyjonbrazil/jc][jc]], so you can manipulate and filter structured data (json in this case), problem being, the program in question needs to be supported and... it's a bandaid on top, linux command will always be line-oriented by default, due to backwards compatibility, they were this way in the original A&T Unix and will continue being this way.
+
+Some newer shells like [[https://www.nushell.sh/][nushell]] and [[https://en.wikipedia.org/wiki/PowerShell][PowerShell]] operate on structured data and/or objects, thus not suffering from the same problems more traditional shells do. [fn:3]
+
+* Footnotes
+
+[fn:1] This is one of the things I enjoy about so much about Common Lisp (although this point isn't exclusive to Common Lisp, nor to Lisps), there's various ways to achieve something, so, if I don't like a certain way of doing it, I can just choose another.
+
+This is more or less true for other multi-paradigm languages, although many of those so called "multi-paradigm" languages usually incentivize a certain paradigm over the others.
+
+[fn:2] Actually =git grep= can show the context around a given line by passing an additional flag, although useful, this doesn't solve the fundamental problem .
+
+[fn:3] They still suffer from other problems, more on that to come!

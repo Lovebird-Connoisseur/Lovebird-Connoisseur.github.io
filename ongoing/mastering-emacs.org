@@ -1,0 +1,61 @@
+#+TITLE: Mastering Emacs
+#+AUTHOR: Lovebird Connoisseur
+#+DATE: <2024-06-12 qua>
+#+EMAIL: lovebird-connoisseur@tutanota.com
+#+TAGS: lisp emacs editors
+#+LANGUAGE: en
+
+* Introduction
+
+In my journey to deepen my understanding of the tools I use everyday, I decided to start reading the book [[https://www.masteringemacs.org/][Mastering Emacs]].
+
+The book is less of a guide on how to use [[https://www.gnu.org/software/emacs/][Emacs]] itself, and more of a collection of tips and useful features. In a way, it is similar to Practical Vim (which I haven't yet read).
+
+At the time of writting, the latest book edition is targetted at Emacs version 28, so some tiny details were a little incorrect (I'm currently using version 29.3), but that didn't matter much in the overall scheme of things.
+
+* Small but packs a punch!
+
+Despite being relatively short, the book is full to the brim with tips, elisp snippets, useful keybinds and package recommendations. Not a single page is wasted.
+
+In the almost 300 pages, the book tells us about:
+
+1. The history of Emacs, and how it came to be
+2. The philosophy of the Emacs way, and the advantages it brings
+3. Some of its most notable/unique features
+4. Its unique terminology
+   - What is a window
+   - What is a frame
+   - What is the buffer
+   - What is a region
+   - What is a mark and pointer
+   - Cutting and killing, pasting and yanking
+   - What are major and minor modes
+5. Essential commands
+6. How to get help (describe system, apropos, info)
+7. Window management
+   - Basic keybinds
+   - winner-mode
+   - Tabs
+8. Basic movement (including Sexp movement)
+9. Bookmarks and Registers
+10. Selection and Regions
+11. Searching (isearch, occur, imenu, helm, ido, grep and cousins)
+12. Basic editing (killing, transposing, filling, commenting, search and replacing, flushing, counting, joining and splitting, dealing with whitespace)
+13. Macros
+14. Completion and Template Methods
+15. Sorting and Aligning
+16. Zapping
+17. Spell Checking
+18. Example use cases
+    - Dealing with projects using project.el
+    - Xref: Looking up definitions
+    - TRAMP
+    - EWW
+    - Dired
+    - Calling Shell Commands
+    - Compilation
+    - Shells and Terminal Emulators
+
+I have to admit I sometimes found myself a little overwhelmed with all the tricks and keybinds the book presented me with.
+
+As with any book of this nature, its essential to try to implement its teaching into ones workflow, until it becomes second nature.

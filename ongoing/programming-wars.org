@@ -1,0 +1,12 @@
+#+TITLE: Programming wars
+#+AUTHOR: Lovebird Connoisseur
+#+DATE: <2024-06-01 sáb>
+#+EMAIL: lovebird-connoisseur@tutanota.com
+#+TAGS: humor
+#+LANGUAGE: en
+
+* Vi vs Emacs
+* git merge vs git rebase
+* Tabs vs spaces
+* C
+* OOP vs Functional Programming
